@@ -1,0 +1,408 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+/*Tela de Login*/
+.container_body{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #0d47a1 0%, #1976d2 20%, #42a5f5 45%, #81d4fa 70%, #e1f5fe 100%);
+}
+.conteiner_Principal{
+  background-color: #AAD6FF;
+  box-shadow: 0px 0px 10px 1px;
+  border-radius: 25px;
+  padding: 20px;
+  width: 380px;
+  height: 500px;
+}
+.container_Titulo{
+    font-weight: bold;
+    font-size: 40pt;
+    text-align: center;
+    padding: 10px;
+  }
+.container_logo{
+  display: flex;
+  padding-bottom: 15px;
+}
+.nome_Actus{
+    color: #095185;
+    font-size: 20pt;
+    padding-top: 50px;
+  }
+
+.container_input{
+    width: 100%;
+    margin-top: 20px;
+    padding: 8px;
+    border-radius: 18px;
+    border: 1px solid black;
+    background-color: #AAD6FF;
+}
+
+.botao{
+    margin-top: 30px;
+    background-color: #399BE2;
+    color: rgb(255, 255, 255);
+    border-radius: 18px;
+    padding: 8px;
+    border: none;
+    width: 100%;
+    transition: 0.3s;
+}
+.botao:hover{
+    background-color: #048bea;
+}
+#opcoes_login{
+
+  font-size: 10pt;
+  text-align: center;
+  margin: 10px;
+  text-decoration: none;
+}
+.outra_opcao{
+    margin: 0px;
+    padding: 5px;
+    color: #399BE2;
+    text-decoration: none;
+    display: block;
+    
+}
+
+
+/*Tela de Cadastro*/
+
+.conteiner_Cadastro{
+    background-color: #AAD6FF;
+    box-shadow: 0px 0px 10px 1px;
+    border-radius: 25px;
+    padding: 20px;
+    width: 500px;
+    height: 700px;
+  }
+
+/*Tela de Esqueceu Senha*/
+  .conteiner_esqueceu_Senha{
+    background-color: #AAD6FF;
+    box-shadow: 0px 0px 10px 1px;
+    border-radius: 25px;
+    padding: 20px;
+    width: 500px;
+    height: 360px;
+  }
+
+  .label_esqueceu_senha{
+    font-weight: bold;
+    display: block;
+    padding-bottom: 10px;
+    font-size: 20pt;
+  }
+  .label_digite_email{
+    font-size: 14pt;
+  }
+
+/*Tela Insira Código*/
+.conteiner_Codigo{
+    background-color: #AAD6FF;
+    box-shadow: 0px 0px 10px 1px;
+    border-radius: 25px;
+    padding: 20px;
+    width: 500px;
+    height: 490px;
+  }
+  .alinhar_labels{
+    position: relative;
+    left: 80px;
+  }
+  .container_logo_Tela_ins_Cod{
+    text-align: center;
+  }
+  .nome_Actus_em_baixo{
+    color: #095185;
+    font-size: 48pt;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+  }
+  .label_insira_codigo{
+    font-weight: bold;
+    padding-bottom: 10px;
+    font-size: 20pt;
+  }
+  .label_caixa_span{
+    font-size: 10pt;
+  }
+  .conteiner_codigo{
+    background-color: #278eee;
+    height: 100px;
+    width: 280px;
+    font-size: 50pt;
+    padding: 10px;
+  }
+  .posicao_codigo{
+    display: flex;
+    justify-content: center;
+  }
+
+  /*Tela Senha Nova*/
+  .conteiner_senha_Nova{
+    background-color: #AAD6FF;
+    box-shadow: 0px 0px 10px 1px;
+    border-radius: 25px;
+    padding: 20px;
+    width: 500px;
+    height: 490px;
+  }
+
+  .label_senha_nova{
+    font-size: 16pt;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .container_input_senha_Nova{
+    margin-top: 0px;
+}
+
+.separador_senhas{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+  /*Tela de Projetos*/
+.container_navegacao{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.circulo_adicionar_projeto{
+    font-size: 80pt;
+    background-color: #AAD6FF;
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.477);
+    transition: 1s;
+}
+.circulo_adicionar_projeto:hover{
+    background-color: #4fa5f5;
+    transform: scale(1.05);
+}
+
+.container_todos_Projetos{
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
+.carteira{
+    padding: 20px;
+    padding-bottom: 0px;
+    background-color: #084889;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cartao{
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.477);
+    width: 400px;  
+    padding: 30px;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 2px;
+}
+
+.div_logo_menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.barra_de_pesquisa{
+    border-radius: 28px;
+    border: none; 
+    font-size: 18pt; 
+    padding: 10px;
+    padding-left: 18px; 
+    padding-right: 18px;
+    transition: 0.8s;
+
+}
+.barra_de_pesquisa:hover{
+    box-shadow: 0px 0px 20px 1px rgb(230, 230, 230);
+}
+.botao_pesquisar{
+    margin-left: 10px;
+    background-color: transparent;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    border: none;
+    transition: 0.8s;
+}
+.botao_pesquisar:hover{
+    box-shadow: 0px 0px 8px 1px;
+    background-color: #85c2ff;  
+    transform: scale(1.05);
+}
+.botao_ver_Projeto{
+    background-color: transparent;
+    border: transparent;
+    height: fit-content;
+    border-radius: 15px;
+    color: white;
+    background-color: #78bafd;
+    padding: 10px;
+    transition: 0.5s;
+}
+.botao_ver_Projeto:hover{
+    background-color: #1381f0;
+    transform: scale(1.05);
+}
+.botao_adicionar_funcionario{
+    background-color: transparent;
+    border: transparent;
+    margin-left: 30px;
+    transition: 0.8s;
+}
+.botao_adicionar_funcionario:hover{
+    transform: scale(1.15);
+}
+.container_botoes_do_cartao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bola_verde{
+    width: 14px;
+    height: 14px;
+    background-color: green;
+    border-radius: 100%;
+    box-shadow: 1px 1px 1px 1px;
+    
+}
+.bola_amarela{
+    width: 14px;
+    height: 14px;
+    background-color: yellow;
+    border-radius: 100%;
+    box-shadow: 1px 1px 5px 1px;
+}
+.bola_vermelha{
+    width: 14px;
+    height: 14px;
+    background-color: red;
+    border-radius: 100%;
+    box-shadow: 1px 1px 1px 1px;
+}
+.botao_menu_sanduiche{
+    width: 60px;
+    height: 60px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgba(255, 255, 255, 0); 
+    border: none; 
+    margin-left: 30px;
+    transition: 0.3s;
+}
+.botao_menu_sanduiche:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 1px rgb(0, 0, 65);
+    border-radius: 12px;
+}
+.container_opcoes_menu{
+    background-color: #000000;
+    position: absolute;
+    right: 54px;
+    top: 100px;
+    font-size: 22pt;
+    border-radius: 20px;
+    padding: 30px;
+    line-height: 50px;
+    color: white;
+    box-shadow: 0px 0px 10px 1px rgb(0, 0, 65);
+    width: 350px;
+    
+}
+.container_opcoes_menu > ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.container_opcoes_menu > ul > li > a{
+    text-decoration: none;
+    color: white;
+    transition: 0.2s;
+}
+.container_opcoes_menu > ul > li > a:hover{
+    font-weight: bold;
+    transform: scale(1.05);
+}
+.container_opcoes_menu > ul > li > button {
+    transition: 0.2s;
+}
+.container_opcoes_menu > ul > li > button:hover{
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+/*Tela Editar Perfil*/
+.imagem_de_perfil{
+    width: 150px;
+    height: 150px;
+    background-color: rgb(237, 249, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    transition: 0.2s;
+}
+
+.imagem_de_perfil:hover{
+    box-shadow: 0px 0px 10px 1px rgb(0, 0, 65);
+}
+.bolinha_perfil{
+    transition: 0.2s;
+}
+
+.bolinha_perfil:hover{
+    box-shadow: 0px 0px 10px 1px rgb(0, 0, 65);
+}
+.bolinha_perfil > p{
+    margin: 0px;
+    padding: 0px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(79, 196, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;  
+    font-size: 24pt; 
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+
+}
+.container_perfil_bolinha{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}

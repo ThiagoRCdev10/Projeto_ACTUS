@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="imagens/logo_actus.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actus</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="container_body">
+    <div class="conteiner_Principal">
+      <form>
+        <h1 class="container_Titulo">Login</h1>
+        <div class="container_logo">
+          <img src="imagens/logo_actus.png" alt="logo">
+        <h2 class="nome_Actus">Actus</h2>
+        </div>
+        <input type="email" class="container_input" placeholder="Digite seu email">
+        <input type="password" class="container_input" placeholder="Digite sua senha"> 
+        <button type="button"  class="botao" onclick="acao_botao()">Entrar</button>
+        <div id="opcoes_login">
+          <a href="tela_cadastro.html" class="outra_opcao">Não possui cadastro?</a>
+          <a href="esqueceu_Senha.html" class="outra_opcao">Esqueceu a senha?</a>
+        </div>
+      </form>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    
+    <script>
+      function acao_botao(){
+        window.location.href = "tela_cadastro.html";
+      }
+    </script>
+
+  </body>
+</html>

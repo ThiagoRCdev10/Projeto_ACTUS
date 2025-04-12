@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="imagens/logo_actus.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actus</title>
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body class="container_body">
+    <div class="conteiner_Codigo">
+      <form>
+        <div class="container_logo_Tela_ins_Cod">
+          <img src="imagens/logo_actus.png" alt="logo">
+        <h2 class="nome_Actus_em_baixo">Actus</h2>
+        </div>
+        <div class="alinhar_labels">
+            <label class="label_insira_codigo">Insira o código recebido:</label>
+            <label class="label_caixa_span">Lembre-se de checar a caixa de Spam</label>
+        </div>
+        <div class="posicao_codigo">
+            <input type="email" class="container_input conteiner_codigo" placeholder="_ _ _ _ _ _">
+        </div>
+        <button type="button"  class="botao" onclick="acao_botao()">Confirmar</button>
+
+      </form>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+        function acao_botao(){
+        window.location.href = "senha_Nova.html";
+      }
+    </script>
+  </body>
+</html>

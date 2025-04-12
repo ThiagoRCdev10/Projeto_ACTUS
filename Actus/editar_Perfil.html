@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="imagens/logo_actus.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actus</title>
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body class="container_body">
+    <div class="conteiner_esqueceu_Senha" style="height: fit-content;">
+        <h1 style="text-align: center; font-size: 40pt;">Editar Perfil</h1>
+      <form>
+        <div class="container_logo">
+          <img src="imagens/logo_actus.png" alt="logo">
+        <h2 class="nome_Actus" style="font-size: 20pt;">Actus</h2>
+        </div>
+        <div class="container_perfil_bolinha" onclick="window.alert('Alterar perfil!');">
+            <div class="imagem_de_perfil"><img src="imagens/img_perfil_sem_Fundo.png" alt="img_perfl" width="100px"></div>
+            <div class="bolinha_perfil"><p>+</p></div>
+        </div>
+        <label class="label_digite_email">Nome</label>
+        <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input" placeholder="exemplo@gmail.com">
+        <label class="label_digite_email">Cargo</label>
+        <input style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="Senha(8 a 16 caracteres)">
+        <label class="label_digite_email">Data de Nascimento</label>
+        <input style="margin-top: 0px; margin-bottom: 20px;"  type="date" class="container_input" placeholder="Senha(8 a 16 caracteres)">
+        <button style="margin-top: 10px;" type="button"  class="botao" onclick="acao_botao()">Confirmar</button>
+
+      </form>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+        function acao_botao(){
+        window.location.href = "tela_de_Projetos.html";
+      }
+    </script>
+  </body>
+</html>
