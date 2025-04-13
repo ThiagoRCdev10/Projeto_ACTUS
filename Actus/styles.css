@@ -207,7 +207,7 @@
     justify-content: space-around;
     padding: 50px;
 }
-.carteira{
+.quadro{
     padding: 20px;
     padding-bottom: 0px;
     background-color: #084889;
@@ -225,6 +225,11 @@
     margin-bottom: 20px;
     border-radius: 15px;
     box-shadow: 0px 0px 5px 2px;
+    cursor: grab;
+}
+
+.drag-over {
+  background-color: #46a9f9;
 }
 
 .div_logo_menu{

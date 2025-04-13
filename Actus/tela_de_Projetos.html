@@ -35,11 +35,11 @@
    <div id="botao_menu"></div>
 
     <main class="container_todos_Projetos">
-        <div class="carteira">
+        <div class="quadro" id="A_Fazer">
             <h2 style="font-size: 30pt; color: rgb(255, 255, 255);">A Fazer</h2>
-            <div class="cartao">
+            <div class="cartao" draggable="true">
                 <div class="bola_verde"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Contrução de uma Casa</h3>
+                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 1 Casa</h3>
                 <p>Rua dos aviões Bloco 1 Apto. 500</p>
                 <p>José Matias</p>
                 <p>21/05/2025</p>
@@ -49,9 +49,9 @@
                     <button class="botao_adicionar_funcionario"><img src="imagens/icone_adicionar_funcionario_semFundo.png" alt="img_adicionar_funcionário" width="70px"></button>
                 </div>
               </div>
-              <div class="cartao">
+              <div class="cartao" draggable="true">
                 <div class="bola_verde"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Contrução de uma Casa</h3>
+                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 2 Casas</h3>
                 <p>Rua dos aviões Bloco 1 Apto. 500</p>
                 <p>José Matias</p>
                 <p>21/05/2025</p>
@@ -63,11 +63,11 @@
               </div>
            </div>
         
-           <div class="carteira">
+           <div class="quadro" id="Em_Desenvolvimento">
             <h2 style="font-size: 30pt; color: rgb(255, 255, 255);">Em Desenvolvimento</h2>
-            <div class="cartao">
+            <div class="cartao" draggable="true">
                 <div class="bola_amarela"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Contrução de uma Casa</h3>
+                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 3 Casas</h3>
                 <p>Rua dos aviões Bloco 1 Apto. 500</p>
                 <p>José Matias</p>
                 <p>21/05/2025</p>
@@ -77,9 +77,9 @@
                     <button class="botao_adicionar_funcionario"><img src="imagens/icone_adicionar_funcionario_semFundo.png" alt="img_adicionar_funcionário" width="70px"></button>
                 </div>
               </div>
-              <div class="cartao">
+              <div class="cartao" draggable="true">
                 <div class="bola_amarela"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Contrução de uma Casa</h3>
+                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 4 Casas</h3>
                 <p>Rua dos aviões Bloco 1 Apto. 500</p>
                 <p>José Matias</p>
                 <p>21/05/2025</p>
@@ -91,11 +91,11 @@
               </div>
            </div>
         
-           <div class="carteira">
+           <div class="quadro" id="Finalizado" >
             <h2 style="font-size: 30pt; color: rgb(255, 255, 255);">Finalizado</h2>
-            <div class="cartao">
+            <div class="cartao" draggable="true">
                 <div class="bola_vermelha"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Contrução de uma Casa</h3>
+                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 5 Casas</h3>
                 <p>Rua dos aviões Bloco 1 Apto. 500</p>
                 <p>José Matias</p>
                 <p>21/05/2025</p>
@@ -106,9 +106,9 @@
                 </div>
               </div>
               
-              <div class="cartao">
+              <div class="cartao" draggable="true">
                 <div class="bola_vermelha"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Contrução de uma Casa</h3>
+                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 6 Casas</h3>
                 <p>Rua dos aviões Bloco 1 Apto. 500</p>
                 <p>José Matias</p>
                 <p>21/05/2025</p>
@@ -120,14 +120,15 @@
               </div>
            </div>
     </main>
-    <button class="circulo_adicionar_projeto"><p>+</p></button>
+    <button class="circulo_adicionar_projeto" onclick="botao_plus()"><p>+</p></button>
 
 
     <script type="module" src="/src/main.js"></script>
     <script>
-        function acao_botao(){
-        window.location.href = "tela_de_Projetos.html";
+        function botao_plus(){
+        window.location.href = "tela_projeto_Individual.html";
       }
+
 
       var status_menu = false; 
 
@@ -150,7 +151,66 @@
       }else{document.getElementById("botao_menu").innerHTML = `<div></div>`}
         
     }
-         
+    
+    //Sessão onde faremos a movimentação dos cards
+
+    const cartoes = document.querySelectorAll('.cartao');
+    const quadros = document.querySelectorAll('.quadro');
+
+    cartoes.forEach(cartao => {
+      cartao.addEventListener('dragstart', () => {
+        cartao.classList.add('dragging');
+      });
+
+      cartao.addEventListener('dragend', () => {
+        cartao.classList.remove('dragging');
+      });
+    });
+
+    quadros.forEach(quadro => {
+      quadro.addEventListener('dragover', e => {
+        e.preventDefault();
+        quadro.classList.add('drag-over');
+      });
+
+      quadro.addEventListener('dragleave', () => {
+        quadro.classList.remove('drag-over');
+      });
+
+      quadro.addEventListener('drop', e => {
+        e.preventDefault();
+        const dragging = document.querySelector('.dragging');
+        quadro.appendChild(dragging);
+        quadro.classList.remove('drag-over');
+
+         /*Confere a cor das bolinhas verde, amarela e vermelha*/
+
+    var A_Fazer = document.getElementById('A_Fazer');
+    for(let i=1 ; i < A_Fazer.children.length ; i++ ){
+      const cartao_Green  = A_Fazer.children[i];
+      if (!(cartao_Green.classList.contains('bola_verde'))) {
+        cartao_Green.children[0].style.backgroundColor = 'green';
+      }}
+
+    var Em_Desenvolvimento = document.getElementById('Em_Desenvolvimento');
+    for(let i=1 ; i < Em_Desenvolvimento.children.length ; i++ ){
+      const cartao_Yellow  = Em_Desenvolvimento.children[i];
+      if (!(cartao_Yellow.classList.contains('bola_amarela'))) {
+        cartao_Yellow.children[0].style.backgroundColor = 'yellow';
+      }}
+    
+    var Finalizado = document.getElementById('Finalizado');
+    for(let i=1 ; i < Finalizado.children.length ; i++ ){
+      const cartao_Red  = Finalizado.children[i];
+      if (!(cartao_Red.classList.contains('bola_verde'))) {
+        cartao_Red.children[0].style.backgroundColor = 'red';
+      }}
+      });
+    });
+
+   
+    
+    
     </script>
   </body>
 </html>
