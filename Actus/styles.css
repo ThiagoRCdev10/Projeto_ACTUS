@@ -1,7 +1,8 @@
 
 *{
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /*Tela de Login*/
@@ -197,6 +198,10 @@
     box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.477);
     transition: 1s;
 }
+.circulo_adicionar_projeto > p{
+  margin: 0px;
+  padding: 0px;
+} 
 .circulo_adicionar_projeto:hover{
     background-color: #4fa5f5;
     transform: scale(1.05);
@@ -340,7 +345,7 @@
     top: 100px;
     font-size: 22pt;
     border-radius: 20px;
-    padding: 30px;
+    padding: 40px;
     line-height: 50px;
     color: white;
     box-shadow: 0px 0px 10px 1px rgb(0, 0, 65);
@@ -359,14 +364,20 @@
 }
 .container_opcoes_menu > ul > li > a:hover{
     font-weight: bold;
-    transform: scale(1.05);
+}
+.container_opcoes_menu > ul > li{
+  transition: 0.2s;
+}
+.container_opcoes_menu > ul > li:hover{
+transform: scale(1.05);
+font-weight: bold;
 }
 .container_opcoes_menu > ul > li > button {
-    transition: 0.2s;
+  transition: 0.2s;
 }
 .container_opcoes_menu > ul > li > button:hover{
-    font-weight: bold;
-    transform: scale(1.05);
+  font-weight: bold;
+  transform: scale(1.05);
 }
 
 /*Tela Editar Perfil*/
@@ -440,11 +451,11 @@
 #preview{
   margin-top: 20px;
   width: 100%;
-  height: 100%;
+  height: 600px;
 
 }
 .container_elementos_preview{
   width: 600px;
-  height: 700px;
+  height: 600px;
 
 }
