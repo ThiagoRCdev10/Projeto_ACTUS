@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="imagens/logo_actus.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actus</title>
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body style="background: linear-gradient(45deg, #0d47a1 0%, #1976d2 20%, #42a5f5 45%, #81d4fa 70%, #e1f5fe 100%); height: 100vh;background-attachment: fixed">
+
+    <nav class="container_navegacao" style="justify-content: flex-end;">
+      
+        <div style="padding-right: 50px;" class="div_logo_menu">
+                <div class="container_logo_Tela_ins_Cod">
+                    <img src="imagens/logo_actus.png" alt="logo">
+                    <h2 style="color: #095185; font-size: 18pt;">Actus</h2>
+                </div>
+                <button class="botao_menu_sanduiche" onclick="abrir_opcoes_do_Menu()">
+                    <img src="imagens/menu_sanduiche-semfundo.png" width="60" height="60" alt="menu_sanduíche">
+                </button>
+        </div>   
+   </nav>
+    
+    <div id="botao_menu"></div>
+    
+    <main style="display: flex;justify-content: start; align-items: flex-start;">
+    <div class="conteiner_esqueceu_Senha" style="height: fit-content;margin-left: 100px;">
+        <h1 style="text-align: center; font-size: 40pt;">Detalhes iniciais:</h1>
+        <div class="container_logo">
+            <img src="imagens/logo_actus.png" alt="logo">
+          <h2 class="nome_Actus" style="font-size: 20pt;">Actus</h2>
+          </div>
+      <form>
+        <label class="label_digite_email">Nome do Projeto:</label>
+        <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input" placeholder="Construção de uma casa">
+        <label class="label_digite_email">Endereço da obra:</label>
+        <input style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="Rua dos Aviões, 333">
+        <label class="label_digite_email">Responsável pela obra:</label>
+        <input style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="João Firmino">
+        <label class="label_digite_email">Data de conclusão da obra:</label>
+        <input style="margin-top: 0px; margin-bottom: 20px;"  type="date" class="container_input">
+        <label class="label_digite_email">Decrição do projeto:</label>
+        <textarea class="Area_de_texto" style="margin-top: 0px; margin-bottom: 20px;" name="" id="" placeholder="Foi solicitado uma restauração do pisa da sala de estar" rows="5" cols="55"></textarea>
+        <label class="label_digite_email">Etapas do Projeto:</label>
+        <select class="caixa_de_selecao" style="display: block;">
+            <option value="item1">Quebra do solo</option>
+            <option value="item2">Limpeza do solo</option>
+            <option value="item3">Fazer Sapata</option>
+          </select>
+      </form>
+    </div>
+
+    <div class="conteiner_esqueceu_Senha" style="height: fit-content;width: 540px;margin-left: 100px;margin-right: 100px;">
+        <h1 style="text-align: center; font-size: 40pt;">Etapa:</h1>
+        <div class="container_logo">
+            <img src="imagens/logo_actus.png" alt="logo">
+          <h2 class="nome_Actus" style="font-size: 20pt;">Actus</h2>
+          </div>
+      <form>
+        <div class="itens_da_etapa">
+            <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input caixaDeTexto_checkBOX">
+            <input type="checkbox" class="botao_chackBox">
+        </div>
+        <div class="itens_da_etapa">
+            <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input caixaDeTexto_checkBOX">
+            <input type="checkbox" class="botao_chackBox">
+        </div>
+        <div class="itens_da_etapa">
+            <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input caixaDeTexto_checkBOX">
+            <input type="checkbox" class="botao_chackBox">
+        </div>
+        <div class="itens_da_etapa">
+            <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input caixaDeTexto_checkBOX">
+            <input type="checkbox" class="botao_chackBox">
+        </div>
+        
+        <button style="margin-top: 10px;" type="button"  class="botao" onclick="botao_confirmar()">Adicionar Etapa</button>
+        <button style="display: block; width: 200px;margin: auto;margin-top: 30px; " type="button"  class="botao" onclick="botao_upload_arquivos()"><img style="width: 50px;" src="imagens/upload_de_arquivos_semFundo.png" alt="upload_de_arquivos_semFundo"></button>
+        <input type="file" id="fileUpload" style="display: none;"/>
+      </form>
+    </div>
+
+    <div class="container_elementos_preview">
+        <div id="preview"></div>
+    </div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+
+        function botao_upload_arquivos(){
+            const botao_abrir_arquivos = document.getElementById('fileUpload');
+            botao_abrir_arquivos.click();
+        }
+          /*Interação do Menu*/
+      var status_menu = false; 
+
+function abrir_opcoes_do_Menu(){
+
+  status_menu = !status_menu;
+  if(status_menu==true){
+      document.getElementById("botao_menu").innerHTML = 
+  `
+  <div class="container_opcoes_menu">
+      <ul>
+          <li><button style="background-color: transparent; color: white;display: flex;justify-content: flex-start;align-items: center; border: transparent;">Tema Escuro<img src="imagens/lua.png" alt="img_sol" width="40px" height="40px" style="border-radius: 100%; margin-left: 10px;"></button></li>
+          <li><a href="tela_de_Projetos.html">Meus Projetos</a></li>
+          <li><a href="alterar_Login.html">Alterar Login</a></li>
+          <li><a href="index.html">Sair</a></li>
+      </ul>
+  </div> 
+  `
+}else{document.getElementById("botao_menu").innerHTML = `<div></div>`}
+  
+}
+
+/*código da para pegar o arquivo e visualização*/
+const input = document.getElementById('fileUpload');
+    const preview = document.getElementById('preview');
+
+    input.addEventListener('change', () => {
+      const file = input.files[0];
+      preview.innerHTML = ""; // Limpa prévia anterior
+
+      if (!file) return;
+
+      const fileURL = URL.createObjectURL(file);
+      const fileType = file.type;
+
+      if (fileType.startsWith("image/")) {
+        const img = document.createElement("img");
+        img.src = fileURL;
+        img.style.maxWidth = "100%";
+        img.style.maxHeight = "600px";
+        preview.appendChild(img);
+      } 
+      else if (fileType === "application/pdf") {
+        const embed = document.createElement("embed");
+        embed.src = fileURL;
+        embed.type = "application/pdf";
+        embed.width = "100%";
+        embed.height = "600px";
+        preview.appendChild(embed);
+      } 
+      else if (fileType.startsWith("video/")) {
+        const video = document.createElement("video");
+        video.src = fileURL;
+        video.controls = true;
+        video.width = 600;
+        preview.appendChild(video);
+      }
+      else if (fileType.startsWith("audio/")) {
+        const audio = document.createElement("audio");
+        audio.src = fileURL;
+        audio.controls = true;
+        preview.appendChild(audio);
+      }
+      else if (fileType.startsWith("text/") || file.name.endsWith(".txt")) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const text = document.createElement("pre");
+          text.textContent = reader.result;
+          preview.appendChild(text);
+        };
+        reader.readAsText(file);
+      } 
+      else {
+        preview.textContent = "Pré-visualização não disponível para esse tipo de arquivo.";
+      }
+    });
+    </script>
+  </body>
+</html>

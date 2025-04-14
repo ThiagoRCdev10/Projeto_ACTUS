@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 
   </head>
-  <body style="background: linear-gradient(45deg, #0d47a1 0%, #1976d2 20%, #42a5f5 45%, #81d4fa 70%, #e1f5fe 100%); height: 100vh;">
+  <body style="background: linear-gradient(45deg, #0d47a1 0%, #1976d2 20%, #42a5f5 45%, #81d4fa 70%, #e1f5fe 100%); height: 100vh;background-attachment: fixed">
 
     <nav class="container_navegacao">
         <h1 style="padding-left: 50px;color: white;font-size: 40pt;">
@@ -36,7 +36,7 @@
 
     <main class="container_todos_Projetos">
         <div class="quadro" id="A_Fazer">
-            <h2 style="font-size: 30pt; color: rgb(255, 255, 255);">A Fazer</h2>
+            <h2 style="font-size: 30pt; color: rgb(255, 255, 255);padding-bottom: 18px;">A Fazer</h2>
             <div class="cartao" draggable="true">
                 <div class="bola_verde"></div>
                 <h3 style="padding-bottom: 20px; text-align: center;">Construção de 1 Casa</h3>
@@ -64,7 +64,8 @@
            </div>
         
            <div class="quadro" id="Em_Desenvolvimento">
-            <h2 style="font-size: 30pt; color: rgb(255, 255, 255);">Em Desenvolvimento</h2>
+            <h2 style="font-size: 30pt; color: rgb(255, 255, 255);
+            padding-bottom: 18px;">Em Desenvolvimento</h2>
             <div class="cartao" draggable="true">
                 <div class="bola_amarela"></div>
                 <h3 style="padding-bottom: 20px; text-align: center;">Construção de 3 Casas</h3>
@@ -92,7 +93,7 @@
            </div>
         
            <div class="quadro" id="Finalizado" >
-            <h2 style="font-size: 30pt; color: rgb(255, 255, 255);">Finalizado</h2>
+            <h2 style="font-size: 30pt; color: rgb(255, 255, 255);padding-bottom: 18px;">Finalizado</h2>
             <div class="cartao" draggable="true">
                 <div class="bola_vermelha"></div>
                 <h3 style="padding-bottom: 20px; text-align: center;">Construção de 5 Casas</h3>
@@ -125,11 +126,13 @@
 
     <script type="module" src="/src/main.js"></script>
     <script>
+
+      /*Interação do Botão circular com um + */
         function botao_plus(){
         window.location.href = "tela_projeto_Individual.html";
       }
 
-
+      /*Interação do Menu*/
       var status_menu = false; 
 
       function abrir_opcoes_do_Menu(){
@@ -141,7 +144,6 @@
         <div class="container_opcoes_menu">
             <ul>
                 <li><button style="background-color: transparent; color: white;display: flex;justify-content: flex-start;align-items: center; border: transparent;">Tema Escuro<img src="imagens/lua.png" alt="img_sol" width="40px" height="40px" style="border-radius: 100%; margin-left: 10px;"></button></li>
-                <li><a href="tela_de_Projetos.html">Meus Projetos</a></li>
                 <li><a href="alterar_Login.html">Alterar Login</a></li>
                 <li><a href="editar_Perfil.html">Editar Perfil</a></li>
                 <li><a href="index.html">Sair</a></li>

@@ -214,8 +214,10 @@
     border-radius: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    width: 460px;
+    height: fit-content;
 }
 .cartao{
     box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.477);
@@ -379,16 +381,13 @@
     transition: 0.2s;
 }
 
-.imagem_de_perfil:hover{
+.imagem_de_perfil:hover {
     box-shadow: 0px 0px 10px 1px rgb(0, 0, 65);
-}
-.bolinha_perfil{
-    transition: 0.2s;
+    transform: scale(1.05);
+    
 }
 
-.bolinha_perfil:hover{
-    box-shadow: 0px 0px 10px 1px rgb(0, 0, 65);
-}
+
 .bolinha_perfil > p{
     margin: 0px;
     padding: 0px;
@@ -410,4 +409,42 @@
     width: fit-content;
     height: fit-content;
     margin: auto;
+}
+.container_posicao_centralizada{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+/*Tela Criação de um Novo Projeto*/
+.Area_de_texto{
+  border-radius: 20px;
+  padding: 20px;
+}
+.caixa_de_selecao{
+  border-radius: 10px;
+  padding: 5px;
+  width: 100%;
+}
+.caixaDeTexto_checkBOX{
+  width: 500px;
+}
+.botao_chackBox{
+  cursor: pointer;
+}
+.itens_da_etapa{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#preview{
+  margin-top: 20px;
+  width: 100%;
+  height: 100%;
+
+}
+.container_elementos_preview{
+  width: 600px;
+  height: 700px;
+
 }
