@@ -68,7 +68,7 @@
           </div>
       <form id="formulario_da_Etapa">
         <div class="itens_da_etapa">
-            <input name="Nome_da_Etapa" type="text" class="container_input caixaDeTexto_checkBOX" style="width: 100%;" id="nome_etapa">
+            <input name="Nome_da_Etapa" type="text" class="container_input caixaDeTexto_checkBOX" style="width: 100%;background-color: #77aeff6e; font-size: 20pt;" id="nome_etapa">
         </div>
         <div id="linhas_novas">
           <div class="itens_da_etapa">
@@ -204,6 +204,26 @@ const input = document.getElementById('fileUpload');
        document.getElementById('linhas_novas').appendChild(Linha);
     }
 
+    //inicialização dos numeros das Etapas
+    const keys_local_storage = Object.keys(localStorage);
+      var vetor = [];
+      var j = 0;
+      for (let i = 0; i < keys_local_storage.length; i++) {
+        if (keys_local_storage[i].startsWith("Etapa")) {
+          const n_aux = keys_local_storage[i].replace("Etapa", "");
+          vetor[j] = n_aux;
+          j++;
+        }}
+
+    if(vetor.length == 0){
+      var numero_da_Etapa = 0;
+    }
+    else{numero_da_Etapa = Math.max(...vetor) + 1;} 
+    
+    
+
+
+  
     /*Função para deletar item  da Etapa*/
     var posicao;
     function deletar_Linha(botao_delete){
@@ -212,20 +232,32 @@ const input = document.getElementById('fileUpload');
       const inputs = divPai.querySelectorAll('input')
       try{
         
-      let dados_atualizados = JSON.parse(localStorage.getItem(NOME_DA_ETAPA));
+      let dados_atualizados = JSON.parse(localStorage.getItem(`Etapa${numero_da_Etapa}`));
 
       inputs.forEach(input=>{
         delete dados_atualizados[input.name];
       });
 
-      localStorage.setItem(NOME_DA_ETAPA, JSON.stringify(dados_atualizados));
+      localStorage.setItem(`Etapa${numero_da_Etapa}`, JSON.stringify(dados_atualizados));
 
       }catch{}
 
       divPai.remove();
     }
 
-    var dados;
+
+    //Dicionario para traduzir nome_da_etapa para Etapa"numero"
+    var dicionario_de_etapas;
+    if(localStorage.getItem("dicionario_de_etapas") == null){
+      dicionario_de_etapas = {};}
+    else{
+      dicionario_de_etapas = JSON.parse(localStorage.getItem('dicionario_de_etapas'));
+    }
+    
+
+
+
+      var dados;
     /*Função de Submeter do Form para salvar*/
       var num_item = 1;
       
@@ -248,29 +280,17 @@ const input = document.getElementById('fileUpload');
         dados[checkboxes.name] = checkboxes.checked;
       });
 
-
-      const chaves = Object.keys(localStorage);
-
       var problema = false;
-      var repeticao = true;
-      chaves.forEach(chave => {  
-        if(dados[caixas_de_textos[0].name] == chave && dados[caixas_de_textos[0].name] != ''&& repeticao == true ){
-          const resposta = confirm("Essa Etapa já existe. Você gostaria de salvar as atualizações na Etapa existente?");
-          if(resposta == true){
-            localStorage.setItem(dados[caixas_de_textos[0].name], JSON.stringify(dados)); 
-          alert('Etapa atualizada com sucesso!');
-          }
-          problema = true;
-          repeticao = false;}
-      });
-
       if(dados[caixas_de_textos[0].name] == ''){
           alert('Essa Etapa está sem nome, escolha um nome.');
           problema = true;}
 
         if(problema == false){
-          localStorage.setItem(dados[caixas_de_textos[0].name], JSON.stringify(dados)); 
-            
+          localStorage.setItem(`Etapa${numero_da_Etapa}`, JSON.stringify(dados));      
+          dicionario_de_etapas[`Etapa${numero_da_Etapa}`] = dados[caixas_de_textos[0].name];
+          localStorage.setItem('dicionario_de_etapas', JSON.stringify(dicionario_de_etapas)); 
+          numero_da_Etapa++;
+        
           const ListaDeEtapas = document.getElementById('lista_de_etapas');
 
           const novaOpcao = document.createElement('option');
@@ -308,14 +328,31 @@ const input = document.getElementById('fileUpload');
            
     }
 
-     // Busca valor da Lista-de-Etapas joga os valores no container chamado "Etapa"
-     function carrega_dados_da_Etapa(){
+     
+     
+     const Lista_todas_Etapas = document.getElementById('lista_de_etapas');
+     Lista_todas_Etapas.addEventListener('change', () => {
+      carrega_dados_da_Etapa();
+    });
+
+
+    
+
+    // Busca valor da Lista-de-Etapas joga os valores no container chamado "Etapa"
+    function carrega_dados_da_Etapa(){
       document.getElementById('formulario_da_Etapa').reset();
       document.getElementById('linhas_novas').innerHTML = '';
 
       let indice_do_selecionado = Lista_todas_Etapas.selectedIndex 
-      let Etapa_selecionada = Lista_todas_Etapas.options[indice_do_selecionado].text;
-      const objeto_Etapa = JSON.parse(localStorage.getItem(Etapa_selecionada));
+      let Nome_Etapa_selecionada = Lista_todas_Etapas.options[indice_do_selecionado].text;
+      var objeto_Etapa;
+      for(let c in dicionario_de_etapas){
+        if(dicionario_de_etapas[c] == Nome_Etapa_selecionada){
+          objeto_Etapa = JSON.parse(localStorage.getItem(c));
+          break;
+        }
+      }
+      
       document.querySelector('input[name="Nome_da_Etapa"]').value = objeto_Etapa['Nome_da_Etapa'];
 
       var Tamanho_Objeto = Object.keys(objeto_Etapa).length;
@@ -342,14 +379,10 @@ const input = document.getElementById('fileUpload');
         }
       });
      }
-     
-     const Lista_todas_Etapas = document.getElementById('lista_de_etapas');
-     Lista_todas_Etapas.addEventListener('change', () => {
-      
-      carrega_dados_da_Etapa();
 
-    });
 
+    //numero_da_Etapa
+    //dicionario_de_etapas
 
     //Exluir Etapa
     function botao_excluir_etapa(){
@@ -358,7 +391,14 @@ const input = document.getElementById('fileUpload');
       
       if(document.getElementById('nome_etapa').value != ''){
         try{
-          localStorage.removeItem(ListaDeEtapas.options[ListaDeEtapas.selectedIndex].text);
+          for(let c in dicionario_de_etapas){
+            if(dicionario_de_etapas[c] == ListaDeEtapas.options[ListaDeEtapas.selectedIndex].text){
+              localStorage.removeItem(c);
+              delete dicionario_de_etapas[c];
+              localStorage.setItem('dicionario_de_etapas', JSON.stringify(dicionario_de_etapas)); 
+              break;
+            }
+          }
           ListaDeEtapas.options[ListaDeEtapas.selectedIndex].remove(); 
           ListaDeEtapas.selectedIndex = 0;
           carrega_dados_da_Etapa();
@@ -383,7 +423,7 @@ const input = document.getElementById('fileUpload');
     //função para ver a lista com todas as Etapas
     function Ver_Etapas(){
 
-      document.getElementById('topico_segunda_tela').innerText = 'Etapa';
+      document.getElementById('topico_segunda_tela').innerText = 'Etapa:';
       const lista = document.getElementById('lista_de_etapas');
       
       if(lista.length > 0){
@@ -397,17 +437,12 @@ const input = document.getElementById('fileUpload');
 
 
     //Evento para analisar o que será feito antes da página fazer um reload
-    window.addEventListener("beforeunload", function (e) {
+   /* window.addEventListener("beforeunload", function (e) {
       e.preventDefault(); // necessário para alguns navegadores
       e.returnValue = ""; // dispara o alerta de confirmação padrão do navegador
-    });
+    });*/
       
-//Evento pquando a página fez um reload
-    window.addEventListener("load", () => {
-      if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
-        
-      } 
-    });
+
 
 
     //excluir o projeto
@@ -416,20 +451,48 @@ const input = document.getElementById('fileUpload');
     }
 
 
-    //salvar o projeto
-    function botao_salvar_projeto(){
-      const resposta = confirm("Você deseja salvar os dados deste Projeto?");    
-      if(resposta){
+    //salvar o projeto a cada 100ms (autosave)
+    /*setInterval(auto_save, 100);
+    var cards = {};
+    var numero_card = 0;
+    function auto_save() {
+  
         const Nome_do_Projeto = document.getElementById('Nome_do_Projeto');
         const Endereco_da_obra = document.getElementById('Endereco_da_obra');
         const Responsavel_pela_obra = document.getElementById('Responsavel_pela_obra');
         const Data_de_conclusao_da_obra = document.getElementById('Data_de_conclusao_da_obra');
-        const Decricaoo_do_projeto = document.getElementById('Decricaoo_do_projeto');
+        const Decrico_do_projeto = document.getElementById('Decricao_do_projeto');
         const Etapas_do_Projeto = document.getElementById('lista_de_etapas');
 
-        Etapas_do_Projeto.selectedIndex = 0;
+        Nome_do_Projeto.value
+        Endereco_da_obra.value
+        Responsavel_pela_obra.value
+        Data_de_conclusao_da_obra.value
+        Decrico_do_projeto.value
+
+        cards['Nome_do_Projeto'] = Nome_do_Projeto.value;
+        cards['Endereco_da_obra'] = Endereco_da_obra.value;
+        cards['Responsavel_pela_obra'] = Responsavel_pela_obra.value;
+        cards['Data_de_conclusao_da_obra'] = Data_de_conclusao_da_obra.value;
+        cards['Decrico_do_projeto'] = Decrico_do_projeto.value;
+        
+        
+        for(let i=0 ; i < Etapas_do_Projeto.options.length ; i++){
+          cards['Etapa0'] = Etapas_do_Projeto.options[i].text;
+        }
+        
         carrega_dados_da_Etapa();
-      }else{
+    }
+*/
+   
+
+
+
+    function botao_salvar_projeto(){
+      if(resposta){
+        const resposta = confirm("Você deseja salvar os dados deste Projeto?");
+      }
+      else{
         /*for (let i = 0; i < localStorage.length; i++) {
           const chave = localStorage.key(i);
           if (chave.startsWith("actuscard")==false) {
