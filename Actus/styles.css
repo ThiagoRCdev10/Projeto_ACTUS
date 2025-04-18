@@ -180,7 +180,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 .circulo_adicionar_projeto{
     font-size: 80pt;
@@ -234,7 +233,6 @@
     box-shadow: 0px 0px 5px 2px;
     cursor: grab;
 }
-
 .drag-over {
   background-color: #46a9f9;
 }
@@ -246,13 +244,12 @@
 }
 
 .barra_de_pesquisa{
-    border-radius: 28px;
-    border: none; 
+    border-radius: 28px; 
     font-size: 18pt; 
     padding: 10px;
     padding-left: 18px; 
     padding-right: 18px;
-    transition: 0.8s;
+    transition: 0.3s;
 
 }
 .barra_de_pesquisa:hover{
@@ -431,31 +428,76 @@ font-weight: bold;
 .Area_de_texto{
   border-radius: 20px;
   padding: 20px;
+  margin-bottom: 20px;
+  width: 500px;
 }
 .caixa_de_selecao{
   border-radius: 10px;
   padding: 5px;
   width: 100%;
 }
-.caixaDeTexto_checkBOX{
-  width: 500px;
-}
-.botao_chackBox{
-  cursor: pointer;
-}
 .itens_da_etapa{
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.caixaDeTexto_checkBOX{
+  width: 450px;
+  margin: 0px;
+}
+.botao_checkBox{
+  cursor: pointer;
+  accent-color: #0000ff;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 #preview{
   margin-top: 20px;
   width: 100%;
   height: 600px;
-
 }
 .container_elementos_preview{
   width: 600px;
-  height: 600px;
-
+  height: 630px;
 }
+.botao_upload{
+  display: block; 
+  width: 80px;
+  margin: auto;
+  margin-right: 0px; 
+  background-color: #62daff;
+  box-shadow: 0px 0px 60px 1px;
+}
+.botao_upload:hover{
+  background-color: #00a8db;
+  box-shadow: 0px 0px 10px 1px;
+}
+.botao_upload2{
+  margin-left: 10px;
+}
+
+.botao_deletar_linha{
+  margin-left: 0px; 
+  font-size: 18pt;
+  padding: 0px; 
+  width: 50px; 
+  height: 50px; 
+  border-radius: 100%;
+  background-color: #ff4949;
+}
+
+.botao_deletar_linha:hover{
+  background-color: #ff1d1d;
+}
+.botao_excluir_etapa{
+  margin-top: 10px; 
+  background-color: #ff4949;
+}
+.botao_excluir_etapa:hover{
+  background-color: #ff1d1d;
+}
+

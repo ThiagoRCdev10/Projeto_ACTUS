@@ -7,8 +7,17 @@
     <title>Actus</title>
     <link rel="stylesheet" href="styles.css">
 
+    <style>
+      .bg-body-tertiary{
+  background-color: red;
+}
+.teste{
+  background-color: red !important;
+}
+    </style>
   </head>
-  <body style="background: linear-gradient(45deg, #0d47a1 0%, #1976d2 20%, #42a5f5 45%, #81d4fa 70%, #e1f5fe 100%); height: 100vh;background-attachment: fixed">
+  <body style="background: linear-gradient(45deg, #0d47a1 0%, #1976d2 20%, #42a5f5 45%, #81d4fa 70%, #e1f5fe 100%); height: 100vh;background-attachment: fixed;">
+
 
     <nav class="container_navegacao" style="justify-content: flex-end;">
       
@@ -26,7 +35,7 @@
     <div id="botao_menu"></div>
     
     <main style="display: flex;justify-content: start; align-items: flex-start;">
-    <div class="conteiner_esqueceu_Senha" style="height: fit-content;margin-left: 100px;">
+    <div class="conteiner_esqueceu_Senha" style="height: fit-content;margin-left: 100px; width: 550px;">
         <h1 style="text-align: center; font-size: 40pt;">Detalhes iniciais:</h1>
         <div class="container_logo">
             <img src="imagens/logo_actus.png" alt="logo">
@@ -34,58 +43,67 @@
           </div>
       <form>
         <label class="label_digite_email">Nome do Projeto:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input" placeholder="Construção de uma casa">
+        <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input" placeholder="Construção de uma casa" id="Nome_do_Projeto">
         <label class="label_digite_email">Endereço da obra:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="Rua dos Aviões, 333">
+        <input style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="Rua dos Aviões, 333" id="Endereco_da_obra">
         <label class="label_digite_email">Responsável pela obra:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="João Firmino">
+        <input style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="João Firmino" id="Responsavel_pela_obra">
         <label class="label_digite_email">Data de conclusão da obra:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;"  type="date" class="container_input">
+        <input style="margin-top: 0px; margin-bottom: 20px;"  type="date" class="container_input" id="Data_de_conclusao_da_obra">
         <label class="label_digite_email">Decrição do projeto:</label>
-        <textarea class="Area_de_texto" style="margin-top: 0px; margin-bottom: 20px;" name="" id="" placeholder="Foi solicitado uma restauração do pisa da sala de estar" rows="5" cols="50"></textarea>
+        <textarea class="Area_de_texto" placeholder="Foi solicitado uma restauração do pisa da sala de estar" rows="3" cols="50" id="Descricao_do_projeto"></textarea>
         <label class="label_digite_email">Etapas do Projeto:</label>
-        <select class="caixa_de_selecao" style="display: block;">
-            <option value="item1">Quebra do solo</option>
-            <option value="item2">Limpeza do solo</option>
-            <option value="item3">Fazer Sapata</option>
+        <select id="lista_de_etapas" class="caixa_de_selecao" style="display: none;" >
           </select>
+          <button style="margin-top: 10px;display: none;" type="button"  class="botao" onclick="Ver_Etapas()" id="botao_ver_etapas">Ver Etapas</button>
+          <button style="margin-top: 10px;" type="button"  class="botao" onclick="botao_Nova_Etapa()">Nova Etapa</button>
       </form>
     </div>
 
-    <div class="conteiner_esqueceu_Senha" style="height: fit-content;width: 540px;margin-left: 100px;margin-right: 100px;">
-        <h1 style="text-align: center; font-size: 40pt;">Etapa:</h1>
+    <div class="conteiner_esqueceu_Senha" style="height: fit-content;width: 600px;margin-left: 100px;margin-right: 100px; margin-bottom: 100px;" >
+        <h1 style="text-align: center; font-size: 40pt;" id="topico_segunda_tela">Nova Etapa:</h1>
         <div class="container_logo">
             <img src="imagens/logo_actus.png" alt="logo">
           <h2 class="nome_Actus" style="font-size: 20pt;">Actus</h2>
           </div>
-      <form>
+      <form id="formulario_da_Etapa">
         <div class="itens_da_etapa">
-            <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input caixaDeTexto_checkBOX">
-            <input type="checkbox" class="botao_chackBox">
+            <input name="Nome_da_Etapa" type="text" class="container_input caixaDeTexto_checkBOX" style="width: 100%;" id="nome_etapa">
         </div>
-        <div class="itens_da_etapa">
-            <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input caixaDeTexto_checkBOX">
-            <input type="checkbox" class="botao_chackBox">
+        <div id="linhas_novas">
+          <div class="itens_da_etapa">
+            <input name="Atividade0" type="text" class="container_input caixaDeTexto_checkBOX">
+            <input name="marcado0" type="checkbox" class="botao_checkBox">
+            <button type="button" class="botao botao_upload botao_deletar_linha" onclick="deletar_Linha(this)">X</button>
+          </div>
         </div>
-        <div class="itens_da_etapa">
-            <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input caixaDeTexto_checkBOX">
-            <input type="checkbox" class="botao_chackBox">
+        <button type="button" style="margin-right: 10px; margin-left: 0px; font-size: 24pt;padding: 0px; width: 50px; height: 50px; border-radius: 100%;" class="botao botao_upload" onclick="adicionar_linha_nova()">+</button>
+        <div style="display: flex; justify-content: flex-end;">
+          <button type="button"  class="botao botao_upload botao_upload2" onclick="botao_upload_arquivos()"><img style="width: 50px; " src="imagens/upload_de_arquivos_semFundo.png" alt="upload_de_arquivos_semFundo"></button>
+          <button type="button"  class="botao botao_upload botao_upload2" onclick="botao_upload_arquivos()"><img style="width: 50px; " src="imagens/img_pasta_arquivos_sem_fundo.png" alt="upload_de_arquivos_semFundo"></button>
         </div>
-        <div class="itens_da_etapa">
-            <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input caixaDeTexto_checkBOX">
-            <input type="checkbox" class="botao_chackBox">
-        </div>
-        
-        <button style="margin-top: 10px;" type="button"  class="botao" onclick="botao_confirmar()">Adicionar Etapa</button>
-        <button style="display: block; width: 200px;margin: auto;margin-top: 30px; " type="button"  class="botao" onclick="botao_upload_arquivos()"><img style="width: 50px;" src="imagens/upload_de_arquivos_semFundo.png" alt="upload_de_arquivos_semFundo"></button>
-        <input type="file" id="fileUpload" style="display: none;"/>
+        <button type="button" class="botao botao_excluir_etapa" onclick="botao_excluir_etapa()">Excluir Etapa</button>
+        <button type="submit" style="margin-top: 10px;"   class="botao" >Salvar Etapa</button>
+        <input name="ignore" type="file" id="fileUpload" style="display: none;"/>
       </form>
     </div>
 
-    <div class="container_elementos_preview">
+    <div style="display: flex; flex-direction: column;">
+      <div class="container_elementos_preview" >
         <div id="preview"></div>
+      </div>
+      <div style="margin-top: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <button type="button" style="font-size: 25pt; width: 400px;" class="botao botao_excluir_etapa" onclick="botao_excluir_projeto()">Excluir Projeto</button>
+        <button type="button" style="margin-top: 10px; font-size: 25pt; width: 400px;" class="botao" onclick="botao_salvar_projeto()">Salvar Projeto</button>
+        </div>
     </div>
+
     </main>
+
+
+
+
+
     <script type="module" src="/src/main.js"></script>
     <script>
 
@@ -169,6 +187,259 @@ const input = document.getElementById('fileUpload');
         preview.textContent = "Pré-visualização não disponível para esse tipo de arquivo.";
       }
     });
+
+    /*Função para adiconar um novo item da lista da Etapa*/
+    var numero = 1;
+    function adicionar_linha_nova(){
+      const Linha = document.createElement('div');
+      Linha.innerHTML =  
+      `
+        <div class="itens_da_etapa">
+            <input name="Atividade${numero}" type="text" class="container_input caixaDeTexto_checkBOX">
+            <input name="marcado${numero}" type="checkbox" class="botao_checkBox">
+            <button type="button" class="botao botao_upload botao_deletar_linha" onclick="deletar_Linha(this)">X</button>
+        </div>
+       `;
+       numero++; 
+       document.getElementById('linhas_novas').appendChild(Linha);
+    }
+
+    /*Função para deletar item  da Etapa*/
+    var posicao;
+    function deletar_Linha(botao_delete){
+      const divPai = botao_delete.parentElement;
+      const NOME_DA_ETAPA = document.getElementById('nome_etapa').value;
+      const inputs = divPai.querySelectorAll('input')
+      try{
+        
+      let dados_atualizados = JSON.parse(localStorage.getItem(NOME_DA_ETAPA));
+
+      inputs.forEach(input=>{
+        delete dados_atualizados[input.name];
+      });
+
+      localStorage.setItem(NOME_DA_ETAPA, JSON.stringify(dados_atualizados));
+
+      }catch{}
+
+      divPai.remove();
+    }
+
+    var dados;
+    /*Função de Submeter do Form para salvar*/
+      var num_item = 1;
+      
+      const formulario = document.getElementById('formulario_da_Etapa');
+
+      formulario.addEventListener('submit', function(event) {
+      event.preventDefault(); // impede o envio tradicional do formulário
+
+      dados = {};
+      
+      const caixas_de_textos = formulario.querySelectorAll('input[type="text"]');
+      const checkboxes = formulario.querySelectorAll('input[type="checkbox"]');
+
+
+      caixas_de_textos.forEach(caixas_de_textos => {
+        dados[caixas_de_textos.name] = caixas_de_textos.value; 
+      });
+       
+      checkboxes.forEach(checkboxes => {
+        dados[checkboxes.name] = checkboxes.checked;
+      });
+
+
+      const chaves = Object.keys(localStorage);
+
+      var problema = false;
+      var repeticao = true;
+      chaves.forEach(chave => {  
+        if(dados[caixas_de_textos[0].name] == chave && dados[caixas_de_textos[0].name] != ''&& repeticao == true ){
+          const resposta = confirm("Essa Etapa já existe. Você gostaria de salvar as atualizações na Etapa existente?");
+          if(resposta == true){
+            localStorage.setItem(dados[caixas_de_textos[0].name], JSON.stringify(dados)); 
+          alert('Etapa atualizada com sucesso!');
+          }
+          problema = true;
+          repeticao = false;}
+      });
+
+      if(dados[caixas_de_textos[0].name] == ''){
+          alert('Essa Etapa está sem nome, escolha um nome.');
+          problema = true;}
+
+        if(problema == false){
+          localStorage.setItem(dados[caixas_de_textos[0].name], JSON.stringify(dados)); 
+            
+          const ListaDeEtapas = document.getElementById('lista_de_etapas');
+
+          const novaOpcao = document.createElement('option');
+          novaOpcao.value = `item${num_item}`;
+          novaOpcao.text = dados[caixas_de_textos[0].name];
+          num_item++;
+
+          ListaDeEtapas.appendChild(novaOpcao);
+          alert('Etapa salva com sucesso!');
+          document.getElementById('lista_de_etapas').style.display = 'block';
+           
+          for (let i = 0; i < ListaDeEtapas.options.length; i++) {
+            if (ListaDeEtapas.options[i].text === dados[caixas_de_textos[0].name]) {
+              ListaDeEtapas.selectedIndex = i;
+              break;
+            }
+          }
+        }
+    });
+
+    // Gera o processo de criação de uma nova etapa
+    function botao_Nova_Etapa(){
+      document.getElementById('topico_segunda_tela').innerText = 'Etapa';
+      const lista = document.getElementById('lista_de_etapas');
+      document.getElementById('formulario_da_Etapa').reset();
+      document.getElementById('linhas_novas').innerHTML = '';
+      adicionar_linha_nova();
+      document.getElementById('nome_etapa').focus();
+      document.getElementById('topico_segunda_tela').innerText = 'Nova Etapa:';
+      document.getElementById('lista_de_etapas').style.display = 'none';
+      
+      if(lista.length != 0){
+        document.getElementById('botao_ver_etapas').style.display = 'block';
+      }else{document.getElementById('botao_ver_etapas').style.display = 'none';}
+           
+    }
+
+     // Busca valor da Lista-de-Etapas joga os valores no container chamado "Etapa"
+     function carrega_dados_da_Etapa(){
+      document.getElementById('formulario_da_Etapa').reset();
+      document.getElementById('linhas_novas').innerHTML = '';
+
+      let indice_do_selecionado = Lista_todas_Etapas.selectedIndex 
+      let Etapa_selecionada = Lista_todas_Etapas.options[indice_do_selecionado].text;
+      const objeto_Etapa = JSON.parse(localStorage.getItem(Etapa_selecionada));
+      document.querySelector('input[name="Nome_da_Etapa"]').value = objeto_Etapa['Nome_da_Etapa'];
+
+      var Tamanho_Objeto = Object.keys(objeto_Etapa).length;
+  
+
+      Object.keys(objeto_Etapa).forEach((chave, i) => {
+        if (chave.startsWith("Atividade")) {
+          const num = chave.replace("Atividade", "");
+          
+          const Linha = document.createElement('div');
+          Linha.innerHTML =  
+          `
+            <div class="itens_da_etapa">
+                <input name="Atividade${num}" type="text" class="container_input caixaDeTexto_checkBOX">
+                <input name="marcado${num}" type="checkbox" class="botao_checkBox">
+                <button type="button" class="botao botao_upload botao_deletar_linha" onclick="deletar_Linha(this)">X</button>
+            </div>
+          `;
+          
+          document.getElementById('linhas_novas').appendChild(Linha);
+
+          document.querySelector(`input[name=Atividade${num}]`).value = objeto_Etapa[`Atividade${num}`];
+          document.querySelector(`input[name=marcado${num}]`).checked = objeto_Etapa[`marcado${num}`];
+        }
+      });
+     }
+     
+     const Lista_todas_Etapas = document.getElementById('lista_de_etapas');
+     Lista_todas_Etapas.addEventListener('change', () => {
+      
+      carrega_dados_da_Etapa();
+
+    });
+
+
+    //Exluir Etapa
+    function botao_excluir_etapa(){
+
+      const ListaDeEtapas = document.getElementById('lista_de_etapas');
+      
+      if(document.getElementById('nome_etapa').value != ''){
+        try{
+          localStorage.removeItem(ListaDeEtapas.options[ListaDeEtapas.selectedIndex].text);
+          ListaDeEtapas.options[ListaDeEtapas.selectedIndex].remove(); 
+          ListaDeEtapas.selectedIndex = 0;
+          carrega_dados_da_Etapa();
+        }catch(erro){
+          document.getElementById('formulario_da_Etapa').reset();
+          const linhas = document.querySelectorAll('.itens_da_etapa');
+          for(let i=2 ; i < linhas.length ; i++ ){
+          linhas[i].remove();}
+        }
+      }else{
+        document.getElementById('formulario_da_Etapa').reset();
+        const linhas = document.querySelectorAll('.itens_da_etapa');
+        for(let i=2 ; i < linhas.length ; i++ ){
+        linhas[i].remove();}
+        }
+
+        if(ListaDeEtapas.length == 0){
+          botao_Nova_Etapa();
+        }
+    }
+
+    //função para ver a lista com todas as Etapas
+    function Ver_Etapas(){
+
+      document.getElementById('topico_segunda_tela').innerText = 'Etapa';
+      const lista = document.getElementById('lista_de_etapas');
+      
+      if(lista.length > 0){
+        lista.style.display = 'block';
+        lista.selectedIndex = 0;
+        carrega_dados_da_Etapa();
+        document.getElementById('botao_ver_etapas').style.display = "none";
+      }
+      lista.style.display = 'block';
+    }
+
+
+    //Evento para analisar o que será feito antes da página fazer um reload
+    window.addEventListener("beforeunload", function (e) {
+      e.preventDefault(); // necessário para alguns navegadores
+      e.returnValue = ""; // dispara o alerta de confirmação padrão do navegador
+    });
+      
+//Evento pquando a página fez um reload
+    window.addEventListener("load", () => {
+      if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+        
+      } 
+    });
+
+
+    //excluir o projeto
+    function botao_excluir_projeto(){
+
+    }
+
+
+    //salvar o projeto
+    function botao_salvar_projeto(){
+      const resposta = confirm("Você deseja salvar os dados deste Projeto?");    
+      if(resposta){
+        const Nome_do_Projeto = document.getElementById('Nome_do_Projeto');
+        const Endereco_da_obra = document.getElementById('Endereco_da_obra');
+        const Responsavel_pela_obra = document.getElementById('Responsavel_pela_obra');
+        const Data_de_conclusao_da_obra = document.getElementById('Data_de_conclusao_da_obra');
+        const Decricaoo_do_projeto = document.getElementById('Decricaoo_do_projeto');
+        const Etapas_do_Projeto = document.getElementById('lista_de_etapas');
+
+        Etapas_do_Projeto.selectedIndex = 0;
+        carrega_dados_da_Etapa();
+      }else{
+        /*for (let i = 0; i < localStorage.length; i++) {
+          const chave = localStorage.key(i);
+          if (chave.startsWith("actuscard")==false) {
+            localStorage.removeItem(chave);
+          }
+        }*/
+      }
+    }
+
+
     </script>
   </body>
 </html>
