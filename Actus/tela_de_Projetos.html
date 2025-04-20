@@ -147,61 +147,6 @@ function abrir_opcoes_do_Menu(){
 }else{document.getElementById("botao_menu").innerHTML = `<div></div>`}
   
 } 
-    //Sessão onde faremos a movimentação dos cards
-
-    const cartoes = document.querySelectorAll('.cartao');
-    const quadros = document.querySelectorAll('.quadro');
-
-    cartoes.forEach(cartao => {
-      cartao.addEventListener('dragstart', () => {
-        cartao.classList.add('dragging');
-      });
-
-      cartao.addEventListener('dragend', () => {
-        cartao.classList.remove('dragging');
-      });
-    });
-
-    quadros.forEach(quadro => {
-      quadro.addEventListener('dragover', e => {
-        e.preventDefault();
-        quadro.classList.add('drag-over');
-      });
-
-      quadro.addEventListener('dragleave', () => {
-        quadro.classList.remove('drag-over');
-      });
-
-      quadro.addEventListener('drop', e => {
-        e.preventDefault();
-        const dragging = document.querySelector('.dragging');
-        quadro.appendChild(dragging);
-        quadro.classList.remove('drag-over');
-
-         /*Confere a cor das bolinhas verde, amarela e vermelha*/
-
-    var A_Fazer = document.getElementById('A_Fazer');
-    for(let i=1 ; i < A_Fazer.children.length ; i++ ){
-      const cartao_Green  = A_Fazer.children[i];
-      if (!(cartao_Green.classList.contains('bola_verde'))) {
-        cartao_Green.children[0].style.backgroundColor = 'green';
-      }}
-
-    var Em_Desenvolvimento = document.getElementById('Em_Desenvolvimento');
-    for(let i=1 ; i < Em_Desenvolvimento.children.length ; i++ ){
-      const cartao_Yellow  = Em_Desenvolvimento.children[i];
-      if (!(cartao_Yellow.classList.contains('bola_amarela'))) {
-        cartao_Yellow.children[0].style.backgroundColor = 'yellow';
-      }}
-    
-    var Finalizado = document.getElementById('Finalizado');
-    for(let i=1 ; i < Finalizado.children.length ; i++ ){
-      const cartao_Red  = Finalizado.children[i];
-      if (!(cartao_Red.classList.contains('bola_verde'))) {
-        cartao_Red.children[0].style.backgroundColor = 'red';
-      }}
-      });
-    });
 
    
    
@@ -282,6 +227,120 @@ var tema = JSON.parse(localStorage.getItem('Tema'));
           }
         });
         
+
+        var cards_adicionados = [];
+        //Iniciaçização da pagina
+          var chaves = [];
+          var num_das_chaves = [];
+          for (let i = 0; i < localStorage.length; i++) {
+            if(localStorage.key(i).startsWith("card")){
+              chaves.push(localStorage.key(i));
+              num_das_chaves.push(chaves[i].replace('card',''));
+            } 
+          }
+         //console.log(chaves);
+         //console.log(num_das_chaves);
+          if(cards_adicionados.length != chaves.length){
+            let num_da_ultima_chave = Math.max(...num_das_chaves);
+            let cartao = JSON.parse(localStorage.getItem(`card${num_da_ultima_chave}`));
+            const temp = document.createElement('div');
+            temp.innerHTML = `
+              <div class="cartao" draggable="true">
+                <div class="bola_verde"></div>
+                <h3 style="padding-bottom: 20px; text-align: center;">${cartao['Nome_do_Projeto']}</h3>
+                <p>${cartao['Endereco_da_obra']}</p>
+                <p>${cartao['Responsavel_pela_obra']}</p>
+                <p>${cartao['Data_de_conclusao_da_obra']}</p>
+                <p>${cartao['Descricao_do_projeto']}</p>
+                <div class="container_botoes_do_cartao">
+                    <button class="botao_ver_Projeto">Ver projeto</button>
+                    <button class="botao_adicionar_funcionario"><img src="imagens/icone_adicionar_funcionario_semFundo.png" alt="img_adicionar_funcionário" width="70px"></button>
+                </div>
+              </div>
+            `;
+            // Pega o primeiro filho real do container temporário
+            const card_novo = temp.firstElementChild;
+            document.getElementById('A_Fazer').appendChild(card_novo);
+            cards_adicionados.push(`card${num_da_ultima_chave}`);
+            localStorage.setItem('cards_adicionados', JSON.stringify(cards_adicionados)); 
+          }
+
+
+/*Tem que fazer a parte de reaload(){
+
+}
+*/
+       
+// Sessão onde faremos a movimentação dos cards
+//dragstart -> Quando o usuário começa a arrastar um elemento.
+//dragend -> Quando o usuário solta o item (seja onde for).
+//dragover ->  Quando um item arrastado está passando por 
+//            cima de outro elemento (geralmente um contêiner onde 
+//            ele pode ser solto).
+//dragleave -> Quando o item sendo arrastado sai de um elemento (sem ser solto nele).
+//drop -> Quando o usuário solta o item em cima de um contêiner válido.
+var cartoes = document.querySelectorAll('.cartao');
+var quadros = document.querySelectorAll('.quadro');  
+
+// Variável auxiliar para guardar o cartão sendo arrastado
+cartoes.forEach(cartao => {
+      cartao.addEventListener('dragstart', () => {
+        cartao.classList.add('dragging');
+      });
+
+      cartao.addEventListener('dragend', () => {
+        cartao.classList.remove('dragging');
+      });
+    });
+
+    quadros.forEach(quadro => {
+      quadro.addEventListener('dragover', e => {
+        e.preventDefault();
+        quadro.classList.add('drag-over');
+      });
+
+      quadro.addEventListener('dragleave', () => {
+        quadro.classList.remove('drag-over');
+      });
+
+      quadro.addEventListener('drop', e => {
+        e.preventDefault();
+        const dragging = document.querySelector('.dragging');
+        quadro.appendChild(dragging);
+        quadro.classList.remove('drag-over');
+
+
+    // Atualiza a cor das bolinhas com base no quadro
+    atualizarCoresDosCartoes();
+  });
+});
+
+
+         /*Confere a cor das bolinhas verde, amarela e vermelha*/
+    function atualizarCoresDosCartoes(){
+    var A_Fazer = document.getElementById('A_Fazer');
+    for(let i=1 ; i < A_Fazer.children.length ; i++ ){
+      const cartao_Green  = A_Fazer.children[i];
+      if (!(cartao_Green.classList.contains('bola_verde'))) {
+        cartao_Green.children[0].style.backgroundColor = 'green';
+      }}
+
+    var Em_Desenvolvimento = document.getElementById('Em_Desenvolvimento');
+    for(let i=1 ; i < Em_Desenvolvimento.children.length ; i++ ){
+      const cartao_Yellow  = Em_Desenvolvimento.children[i];
+      if (!(cartao_Yellow.classList.contains('bola_amarela'))) {
+        cartao_Yellow.children[0].style.backgroundColor = 'yellow';
+      }}
+    
+    var Finalizado = document.getElementById('Finalizado');
+    for(let i=1 ; i < Finalizado.children.length ; i++ ){
+      const cartao_Red  = Finalizado.children[i];
+      if (!(cartao_Red.classList.contains('bola_verde'))) {
+        cartao_Red.children[0].style.backgroundColor = 'red';
+      }}
+    }
+
+
     </script>
   </body>
 </html>

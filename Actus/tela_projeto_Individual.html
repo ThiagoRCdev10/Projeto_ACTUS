@@ -444,10 +444,10 @@ const input = document.getElementById('fileUpload');
     }
 
 
-    //salvar o projeto a cada 100ms (autosave)
-    /*setInterval(auto_save, 100);
-    var cards = {};
+    var card = {};
     var numero_card = 0;
+    //salvar o projeto a cada 1s (autosave)
+    /*setInterval(auto_save, 1000);
     function auto_save() {
   
         const Nome_do_Projeto = document.getElementById('Nome_do_Projeto');
@@ -467,7 +467,6 @@ const input = document.getElementById('fileUpload');
         cards['Endereco_da_obra'] = Endereco_da_obra.value;
         cards['Responsavel_pela_obra'] = Responsavel_pela_obra.value;
         cards['Data_de_conclusao_da_obra'] = Data_de_conclusao_da_obra.value;
-        cards['Decrico_do_projeto'] = Decrico_do_projeto.value;
         
         
         for(let i=0 ; i < Etapas_do_Projeto.options.length ; i++){
@@ -482,17 +481,25 @@ const input = document.getElementById('fileUpload');
 
 
     function botao_salvar_projeto(){
-      if(resposta){
-        const resposta = confirm("Você deseja salvar os dados deste Projeto?");
-      }
-      else{
-        /*for (let i = 0; i < localStorage.length; i++) {
-          const chave = localStorage.key(i);
-          if (chave.startsWith("actuscard")==false) {
-            localStorage.removeItem(chave);
-          }
+       const Nome_do_Projeto = document.getElementById('Nome_do_Projeto');
+        const Endereco_da_obra = document.getElementById('Endereco_da_obra');
+        const Responsavel_pela_obra = document.getElementById('Responsavel_pela_obra');
+        const Data_de_conclusao_da_obra = document.getElementById('Data_de_conclusao_da_obra');
+        const Descricao_do_projeto = document.getElementById('Descricao_do_projeto');
+
+        card['Nome_do_Projeto'] = Nome_do_Projeto.value;
+        card['Endereco_da_obra'] = Endereco_da_obra.value;
+        card['Responsavel_pela_obra'] = Responsavel_pela_obra.value;
+        card['Data_de_conclusao_da_obra'] = Data_de_conclusao_da_obra.value;
+        card['Descricao_do_projeto'] = Descricao_do_projeto.value;
+
+        localStorage.setItem(`card${numero_card}`, JSON.stringify(card)); 
+        /*
+        for(let i=0 ; i < Etapas_do_Projeto.options.length ; i++){
+          cards['Etapa0'] = Etapas_do_Projeto.options[i].text;
         }*/
-      }
+
+        window.location.href = "tela_de_Projetos.html";
     }
 
  //Mudar tema do site
