@@ -38,20 +38,36 @@
             <div class="bolinha_perfil"><p>+</p></div>
         </div>
         <label class="label_digite_email">Nome</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input" placeholder="exemplo@gmail.com">
+        <input id="nome" style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input" placeholder="exemplo@gmail.com">
         <label class="label_digite_email">Cargo</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="Senha(8 a 16 caracteres)">
+        <input id="cargo" style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="Senha(8 a 16 caracteres)">
         <label class="label_digite_email">Data de Nascimento</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;"  type="date" class="container_input" placeholder="Senha(8 a 16 caracteres)">
-        <button style="margin-top: 10px;" type="button"  class="botao" onclick="botao_confirmar()">Confirmar</button>
+        <input id="dataNascimento" style="margin-top: 0px; margin-bottom: 20px;"  type="date" class="container_input" placeholder="Senha(8 a 16 caracteres)">
+        <button style="margin-top: 10px;" type="button"  class="botao" onclick="editar_perfil()">Confirmar</button>
       </form>
     </div>
     </main>
     <script type="module" src="/src/main.js"></script>
     <script>
       /*Interação do botão de confirmar*/
-      function botao_confirmar(){
+      function editar_perfil(){
+        const vetor_user_logado = JSON.parse(localStorage.getItem('user_logado'));
+        const dados_cadastro = JSON.parse(localStorage.getItem( vetor_user_logado[0]));
+        const nome = document.getElementById('nome');
+        const cargo = document.getElementById('cargo');
+        const dataNascimento = document.getElementById('dataNascimento');
+        
+       if(nome.value !='' && cargo.value !='' && dataNascimento.value !='' ){
+        dados_cadastro[0] = nome.value; // nome
+        dados_cadastro[3] = cargo.value; //cargo
+        dados_cadastro[2] = dataNascimento.value;  //data nascimento
+
+        localStorage.setItem(vetor_user_logado[0], JSON.stringify(dados_cadastro)); 
         window.location.href = "tela_de_Projetos.html";
+       }else{
+        alert('Preencha todos os campos.');
+       }
+        
       }
 
           /*Interação do Menu*/

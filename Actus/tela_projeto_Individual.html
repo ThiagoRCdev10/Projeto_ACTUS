@@ -106,12 +106,66 @@
     <script type="module" src="/src/main.js"></script>
     <script>
 
+
+
+    var numero_card = 0;
+    let todos_os_cards = [];
+          for (let i = 0; i < localStorage.length; i++) {
+            const chave = localStorage.key(i);
+            if(chave.startsWith("card")){
+              todos_os_cards.push(chave);
+            }
+          }
+    if(todos_os_cards.length != 0){
+      numero_card = JSON.parse(localStorage.getItem('numero_card_novo')).length;
+    }
+
+
+    var num_pos_etapa = 5;//falta ajeitar aqui... e tem que colocar la na parte de salvar eta e de excluir um objeto que vai dizer {card0 : 12 } por exemplo e esse 12 seria a posição de referencia que poarou 
+    if(){
+      num_pos_etapa = JSON.parse(localStorage.getItem(`card${numero_card}`)).length;
+    }
+
+    var card = [];    
+
+    //excluir o projeto
+    function botao_excluir_projeto(){
+      //falta implementar
+    }
+
+
+    function botao_salvar_projeto(){
+      const Nome_do_Projeto = document.getElementById('Nome_do_Projeto');
+      const Endereco_da_obra = document.getElementById('Endereco_da_obra');
+      const Responsavel_pela_obra = document.getElementById('Responsavel_pela_obra');
+      const Data_de_conclusao_da_obra = document.getElementById('Data_de_conclusao_da_obra');
+      const Descricao_do_projeto = document.getElementById('Descricao_do_projeto');
+
+      card[0] = Nome_do_Projeto.value;
+      card[1] = Endereco_da_obra.value;
+      card[2] = Responsavel_pela_obra.value;
+      card[3] = Data_de_conclusao_da_obra.value;
+      card[4] = Descricao_do_projeto.value;
+
+      localStorage.setItem(`card${numero_card}`, JSON.stringify(card)); 
+      /*
+      for(let i=0 ; i < Etapas_do_Projeto.options.length ; i++){
+        cards['Etapa0'] = Etapas_do_Projeto.options[i].text;
+      }*/
+
+      window.location.href = "tela_de_Projetos.html";
+  }
+/////////////////CARREGAMENTO DE UM PROJETO//////////////////////
+
+
+/////////////////////////////////////////////////////////////////
+
         function botao_upload_arquivos(){
             const botao_abrir_arquivos = document.getElementById('fileUpload');
             botao_abrir_arquivos.click();
         }
-          /*Interação do Menu*/
-          var status_menu = false; 
+/*Interação do Menu*/
+var status_menu = false; 
 
 function abrir_opcoes_do_Menu(){
 
@@ -207,9 +261,9 @@ const input = document.getElementById('fileUpload');
           vetor[j] = n_aux;
           j++;
         }}
-
+        var numero_da_Etapa;
     if(vetor.length == 0){
-      var numero_da_Etapa = 0;
+      numero_da_Etapa = 0;
     }
     else{numero_da_Etapa = Math.max(...vetor) + 1;} 
     
@@ -242,16 +296,19 @@ const input = document.getElementById('fileUpload');
     //Dicionario para traduzir nome_da_etapa para Etapa"numero"
     var dicionario_de_etapas;
     if(localStorage.getItem("dicionario_de_etapas") == null){
-      dicionario_de_etapas = {};}
+      dicionario_de_etapas = {};
+      console.log('vaia');
+    }
     else{
       dicionario_de_etapas = JSON.parse(localStorage.getItem('dicionario_de_etapas'));
+      console.log('nao bvazia');
     }
     
 
 
 
       var dados;
-    /*Função de Submeter do Form para salvar*/
+    /*Salva uma nova ETAPA na lista(select)*/
       var num_item = 1;
       
       const formulario = document.getElementById('formulario_da_Etapa');
@@ -279,7 +336,10 @@ const input = document.getElementById('fileUpload');
           problema = true;}
 
         if(problema == false){
-          localStorage.setItem(`Etapa${numero_da_Etapa}`, JSON.stringify(dados));      
+          localStorage.setItem(`Etapa${numero_da_Etapa}`, JSON.stringify(dados));  
+          card[num_pos_etapa] = `Etapa${numero_da_Etapa}`;
+          num_pos_etapa++;
+          localStorage.setItem(`card${numero_card}`, JSON.stringify(card));   
           dicionario_de_etapas[`Etapa${numero_da_Etapa}`] = dados[caixas_de_textos[0].name];
           localStorage.setItem('dicionario_de_etapas', JSON.stringify(dicionario_de_etapas)); 
           numero_da_Etapa++;
@@ -374,8 +434,7 @@ const input = document.getElementById('fileUpload');
      }
 
 
-    //numero_da_Etapa
-    //dicionario_de_etapas
+
 
     //Exluir Etapa
     function botao_excluir_etapa(){
@@ -388,6 +447,13 @@ const input = document.getElementById('fileUpload');
             if(dicionario_de_etapas[c] == ListaDeEtapas.options[ListaDeEtapas.selectedIndex].text){
               localStorage.removeItem(c);
               delete dicionario_de_etapas[c];
+              for(let i=5;i < card.length ; i++){
+                if(card[i] == c){
+                  card.splice(i, 1);
+                  num_pos_etapa--;
+                  localStorage.setItem(`card${numero_card}`, JSON.stringify(card));
+                }
+              }
               localStorage.setItem('dicionario_de_etapas', JSON.stringify(dicionario_de_etapas)); 
               break;
             }
@@ -435,72 +501,6 @@ const input = document.getElementById('fileUpload');
       e.returnValue = ""; // dispara o alerta de confirmação padrão do navegador
     });*/
       
-
-
-
-    //excluir o projeto
-    function botao_excluir_projeto(){
-
-    }
-
-
-    var card = {};
-    var numero_card = 0;
-    //salvar o projeto a cada 1s (autosave)
-    /*setInterval(auto_save, 1000);
-    function auto_save() {
-  
-        const Nome_do_Projeto = document.getElementById('Nome_do_Projeto');
-        const Endereco_da_obra = document.getElementById('Endereco_da_obra');
-        const Responsavel_pela_obra = document.getElementById('Responsavel_pela_obra');
-        const Data_de_conclusao_da_obra = document.getElementById('Data_de_conclusao_da_obra');
-        const Decrico_do_projeto = document.getElementById('Decricao_do_projeto');
-        const Etapas_do_Projeto = document.getElementById('lista_de_etapas');
-
-        Nome_do_Projeto.value
-        Endereco_da_obra.value
-        Responsavel_pela_obra.value
-        Data_de_conclusao_da_obra.value
-        Decrico_do_projeto.value
-
-        cards['Nome_do_Projeto'] = Nome_do_Projeto.value;
-        cards['Endereco_da_obra'] = Endereco_da_obra.value;
-        cards['Responsavel_pela_obra'] = Responsavel_pela_obra.value;
-        cards['Data_de_conclusao_da_obra'] = Data_de_conclusao_da_obra.value;
-        
-        
-        for(let i=0 ; i < Etapas_do_Projeto.options.length ; i++){
-          cards['Etapa0'] = Etapas_do_Projeto.options[i].text;
-        }
-        
-        carrega_dados_da_Etapa();
-    }
-*/
-   
-
-
-
-    function botao_salvar_projeto(){
-       const Nome_do_Projeto = document.getElementById('Nome_do_Projeto');
-        const Endereco_da_obra = document.getElementById('Endereco_da_obra');
-        const Responsavel_pela_obra = document.getElementById('Responsavel_pela_obra');
-        const Data_de_conclusao_da_obra = document.getElementById('Data_de_conclusao_da_obra');
-        const Descricao_do_projeto = document.getElementById('Descricao_do_projeto');
-
-        card['Nome_do_Projeto'] = Nome_do_Projeto.value;
-        card['Endereco_da_obra'] = Endereco_da_obra.value;
-        card['Responsavel_pela_obra'] = Responsavel_pela_obra.value;
-        card['Data_de_conclusao_da_obra'] = Data_de_conclusao_da_obra.value;
-        card['Descricao_do_projeto'] = Descricao_do_projeto.value;
-
-        localStorage.setItem(`card${numero_card}`, JSON.stringify(card)); 
-        /*
-        for(let i=0 ; i < Etapas_do_Projeto.options.length ; i++){
-          cards['Etapa0'] = Etapas_do_Projeto.options[i].text;
-        }*/
-
-        window.location.href = "tela_de_Projetos.html";
-    }
 
  //Mudar tema do site
 var tema = JSON.parse(localStorage.getItem('Tema'));
@@ -559,7 +559,7 @@ var tema = JSON.parse(localStorage.getItem('Tema'));
 
       //Roda quando o DOM inicializa para ver o tema do site
       document.addEventListener('DOMContentLoaded', function () { 
-         
+         //MUDAR TEMA
         if(!tema){
             tema = {};
             tema['status'] = 'claro';
@@ -578,7 +578,13 @@ var tema = JSON.parse(localStorage.getItem('Tema'));
               //botao_mudar_tema.innerHTML = botao_mudar_para_claro;
             }
           }
+
+          //CARREGA DADOS SE FOR DADO UM REFRASH NA PÁGINA
+
         });
+
+        
+
     </script>
   </body>
 </html>

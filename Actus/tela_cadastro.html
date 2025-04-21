@@ -19,21 +19,64 @@
           <img src="imagens/logo_actus.png" alt="logo">
         <h2 class="nome_Actus">Actus</h2>
         </div>
-        <input type="email" class="container_input" placeholder="Nome Completo">
-        <input type="password" class="container_input" placeholder="Email(exemplo@gmail.com)">
-        <input type="email" class="container_input" placeholder="Data de Nascimento">
-        <input type="password" class="container_input" placeholder="Cargo">
-        <input type="email" class="container_input" placeholder="Senha">
-        <input type="password" class="container_input" placeholder="Confirmar senha">
-        <button type="button"  class="botao" onclick="acao_botao()">Entrar</button>
+        <input required type="text" class="container_input itens_cadastro" placeholder="Nome Completo">
+        <input required type="email" class="container_input itens_cadastro" placeholder="exemplo@gmail.com">
+        <input required type="date" class="container_input itens_cadastro" placeholder="Data de Nascimento">
+        <input required type="text" class="container_input itens_cadastro" placeholder="Cargo">
+        <input required type="password" class="container_input itens_cadastro" placeholder="Senha">
+        <input required type="password" class="container_input itens_cadastro" placeholder="Repita a senha" id="senha_repetida">
+        <button type="button"  class="botao" onclick="cadastrar()">Entrar</button>
 
       </form>
     </div>
     <script type="module" src="/src/main.js"></script>
     <script>
-        function acao_botao(){
-        window.location.href = "tela_de_Projetos.html";
-      }
+        function cadastrar(){
+          const itens_cadastro = document.querySelectorAll('.itens_cadastro');
+          let vetor_dados = [];
+          const senha_repetida = document.getElementById('senha_repetida') ;
+          itens_cadastro.forEach(item => {
+            vetor_dados.push(item.value);
+          });
+          if(vetor_dados[0]==''||vetor_dados[1]==''||vetor_dados[2]==''||vetor_dados[3]==''||vetor_dados[4]==''||vetor_dados[5]==''){
+            alert('Preencha todos os campos');
+          }
+          else if(vetor_dados[4] != vetor_dados[5]){
+            alert('Repita a mesma senha, por favor!');
+            senha_repetida.focus();
+          }
+          else{
+            let ja_existe = false;
+            let nums_usuario = [];
+            for (let i = 0; i < localStorage.length; i++) {
+              const chave = localStorage.key(i);
+              if (chave.startsWith('usuario')) {
+                nums_usuario.push(parseInt(chave.replace('usuario','')));
+                const valor = JSON.parse(localStorage.getItem(chave));
+                //verifica se email e senha ja existem
+                if(vetor_dados[1] == valor[1]){
+                  alert('Esse usuário já existe. Escolha outro Email.');
+                  ja_existe = true;
+                  break;
+                }
+
+              }
+            }
+            if(!ja_existe){
+              if(nums_usuario.length == 0){
+                localStorage.setItem(`usuario0`, JSON.stringify(vetor_dados));
+                window.location.href = "index.html";
+              }else{
+                let max_num_usuario = Math.max(...nums_usuario);
+                localStorage.setItem(`usuario${max_num_usuario+1}`, JSON.stringify(vetor_dados));
+                window.location.href = "index.html";
+              }
+            } 
+          }
+            
+        }
+           
+      
 
       //Mudar tema do site
       var tema = JSON.parse(localStorage.getItem('Tema'));
@@ -88,6 +131,8 @@
             }
           }
         });
+
+        
     </script>
   </body>
 </html>

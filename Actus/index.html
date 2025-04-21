@@ -20,7 +20,7 @@
         </div>
         <input id="email" type="email" class="container_input" placeholder="Digite seu email">
         <input id="senha" type="password" class="container_input" placeholder="Digite sua senha"> 
-        <button type="button"  class="botao" onclick="acao_botao()">Entrar</button>
+        <button type="button"  class="botao" onclick="logar()">Entrar</button>
         <div id="opcoes_login">
           <a href="tela_cadastro.html" class="outra_opcao">Não possui cadastro?</a>
           <a href="esqueceu_Senha.html" class="outra_opcao">Esqueceu a senha?</a>
@@ -30,22 +30,33 @@
     <script type="module" src="/src/main.js"></script>
     
     <script>
-      function acao_botao(){
-        //valores simulados do BANCO DE DADOS
-        var emailBD = 'thiagorcdev@gmail.com';
-        var senhaBD = '123456789';
+      function logar(){
 
         let email = document.getElementById('email').value;
         let senha = document.getElementById('senha').value;
         
-        if(email == emailBD && senha == senhaBD){
-          window.location.href = "tela_de_Projetos.html";
-        }
-        else if(email == '' || senha == ''){
-          alert('Digite seu Email e sua Senha.');
-        }
-        else{
-          alert('O Email ou a Senha estam incorretos.');
+        
+        if(email == ''){
+          alert('Digite seu Email');
+        }else if(senha == ''){
+          alert('Digite sua Senha.');
+        }else{
+          let executar = true;
+          //vê se o usuário está cadastrado
+          for (let i = 0; i < localStorage.length; i++) {
+              const chave = localStorage.key(i);
+              if (chave.startsWith('usuario')) {
+                const valor = JSON.parse(localStorage.getItem(chave));
+                if(email == valor[1] && senha == valor[4]){
+                  let usuario_logado = [];
+                  usuario_logado.push(chave); 
+                  localStorage.setItem('user_logado', JSON.stringify(usuario_logado)); 
+                  executar = false;
+                  window.location.href = "tela_de_Projetos.html";
+                }
+              }
+          }
+          if(executar){alert('O Email ou a Senha estam incorretos.');}   
         }
       }
 

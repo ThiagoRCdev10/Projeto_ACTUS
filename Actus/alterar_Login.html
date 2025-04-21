@@ -35,20 +35,41 @@
         </div>
         <label class="label_esqueceu_senha">Deseja Alterar E-mail ou Senha?</label>
         <label class="label_digite_email">Digite seu novo email:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;" type="email" class="container_input" placeholder="exemplo@gmail.com">
+        <input id="email" style="margin-top: 0px; margin-bottom: 20px;" type="email" class="container_input" placeholder="exemplo@gmail.com">
         <label class="label_digite_email">Digite sua nova senha:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;"  type="email" class="container_input" placeholder="Senha(8 a 16 caracteres)">
-        <label class="label_digite_email">Confirme sua nova senha:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;"  type="email" class="container_input" placeholder="Senha(8 a 16 caracteres)">
-        <button style="margin-top: 10px;" type="button"  class="botao" onclick="botao_confirmar()">Confirmar</button>
+        <input id="senha" style="margin-top: 0px; margin-bottom: 20px;"  type="password" class="container_input" placeholder="Senha(8 a 16 caracteres)">
+        <label  class="label_digite_email">Confirme sua nova senha:</label>
+        <input id="senha_rep" style="margin-top: 0px; margin-bottom: 20px;"  type="password" class="container_input" placeholder="Senha(8 a 16 caracteres)">
+        <button style="margin-top: 10px;" type="button"  class="botao" onclick="alterar_login()">Confirmar</button>
       </form>
     </div>
   </main>
     <script type="module" src="/src/main.js"></script>
     <script>
       /*Interação do botão de confirmar*/
-      function botao_confirmar(){
-        window.location.href = "tela_de_Projetos.html";
+      function alterar_login(){
+        const vetor_user_logado = JSON.parse(localStorage.getItem('user_logado'));
+        const dados_cadastro = JSON.parse(localStorage.getItem( vetor_user_logado[0]));
+        const email = document.getElementById('email');
+        const senha = document.getElementById('senha');
+        const senha_rep = document.getElementById('senha_rep');
+        
+        dados_cadastro[1] = email.value; // email
+        dados_cadastro[4] = senha.value; //senha
+        dados_cadastro[5] = senha_rep.value; //senha repetida
+
+       if(email.value =='' || senha.value =='' || senha_rep.value =='' ){
+        alert('Preencha todos os campos.');
+       }else{
+        if(senha.value != senha_rep.value){
+          alert('Repita a mesma senha, por favor!');
+          senha_rep.focus();
+        }else{
+          localStorage.setItem(vetor_user_logado[0], JSON.stringify(dados_cadastro)); 
+          window.location.href = "tela_de_Projetos.html";
+        }
+       }
+
       }
 
           /*Interação do Menu*/

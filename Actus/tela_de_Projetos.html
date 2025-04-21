@@ -122,14 +122,31 @@
               </div>
            </div>
     </main >
-    <button class="circulo_adicionar_projeto" onclick="botao_plus()"><p>+</p></button>
+    <button class="circulo_adicionar_projeto" onclick="adicionar_projeto()"><p>+</p></button>
 
     <script type="module" src="/src/main.js"></script>
     <script>
 
+      var numero_card_novo;
       /*Interação do Botão circular com um + */
-        function botao_plus(){
-        window.location.href = "tela_projeto_Individual.html";
+        function adicionar_projeto(){
+          let chaves = [];
+          for (let i = 0; i < localStorage.length; i++) {
+            const chave = localStorage.key(i);
+            if(chave.startsWith("card")){
+              chaves.push(chave);
+            }
+          }
+          if(chaves.length == 0){
+            numero_card_novo = 0;
+            localStorage.setItem('numero_card_novo', JSON.stringify(numero_card_novo)); 
+          }else{
+            numero_card_novo = JSON.parse(localStorage.getItem('numero_card_novo'));
+            numero_card_novo++;
+            localStorage.setItem('numero_card_novo', JSON.stringify(numero_card_novo)); 
+          }
+
+          window.location.href = "tela_projeto_Individual.html";
       }
 
           /*Interação do Menu*/
