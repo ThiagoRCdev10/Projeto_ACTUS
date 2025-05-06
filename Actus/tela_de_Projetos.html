@@ -1,363 +1,115 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="imagens/logo_actus.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Actus</title>
-    <link rel="stylesheet" href="styles.css" id="folha_de_estilos">
-
+    <link
+      rel="shortcut icon"
+      href="imagens/logo_actus.ico"
+      type="image/x-icon"
+    />
+    <title>Projetos - Actus</title>
   </head>
-  <body >
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--cor-primaria); padding: 0.75rem 1.5rem;">
+    <div class="container-fluid justify-content-between">
+      <h1 class="navbar-brand m-0 fs-4">Projetos</h1>
+      <div class="d-flex align-items-center gap-3">
+        <button id="btnModoLista" class="btn text-white fs-4" title="Alternar modo lista"><i class="bi bi-list-ul"></i></button>
+        <button id="btnFiltro" class="btn text-white fs-3" title="Filtrar OSs"><i class="bi bi-filter"></i></button>
+        <button id="btnToggleDrawer" class="btn text-white fs-3" title="Menu"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Drawer Menu -->
+  <div id="drawerMenu" class="drawer">
+    <div class="text-center perfil_drawer">
+      <i class="bi bi-person-circle display-3"></i>
+      <div id="nomeUsuarioDrawer" class="mt-2 fw-semibold">Usuário</div>
+    </div>
+    <ul class="menu_opcoes list-unstyled">
+      <li><a href="editar_Perfil.html" class="btn w-100 text-start"><i class="bi bi-person-circle"></i> Editar Perfil</a></li>
+      <li><a href="alterar_Login.html" class="btn w-100 text-start"><i class="bi bi-gear"></i> Alterar Login</a></li>
+      <li><button id="btnTema" class="btn w-100 text-start"><i class="bi bi-moon-fill"></i> Mudar Tema</button></li>
+      <li><a href="index.html" class="btn w-100 text-start"><i class="bi bi-box-arrow-left"></i> Sair</a></li>
+    </ul>
+  </div>
 
-    <nav class="container_navegacao">
-        <h1 style="padding-left: 50px;color: white;font-size: 40pt;">
-            Projetos
-        </h1>
-        <form role="search" style="display: flex;justify-content: center;align-items: center;">
-            <input  type="search" placeholder="Pesquisar..." class="barra_de_pesquisa">
-            <button type="submit" class="botao_pesquisar">
-                <img src="imagens/lupa_sem_fundo.png" alt="Ícone" width="30" height="30">
-            </button>
-        </form>
-        <div style="padding-right: 50px;" class="div_logo_menu">
-                <div class="container_logo_Tela_ins_Cod">
-                    <img src="imagens/logo_actus.png" alt="logo">
-                    <h2 style="color: #095185; font-size: 18pt;">Actus</h2>
-                </div>
-                <button class="botao_menu_sanduiche" onclick="abrir_opcoes_do_Menu()">
-                    <img id="imagem_tema" src="imagens/menu_sanduiche-semfundo.png" width="60" height="60" alt="menu_sanduíche">
-                </button>
-        </div>
-        
-   </nav>
+  <!-- Drawer Filtro -->
+  <div id="drawerFiltro" class="drawer drawer-filtro">
+    <h5 class="mb-3">Filtros</h5>
+    <!-- <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" value="aberta" checked />
+      <label class="form-check-label">Aberta</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" value="em processo" checked />
+      <label class="form-check-label">Em processo</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" value="rejeitado" checked />
+      <label class="form-check-label">Rejeitado</label>
+    </div>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" value="concluído" checked />
+      <label class="form-check-label">Concluído</label>
+    </div> -->
 
-   <div id="botao_menu"></div>
+    <input type="text" class="form-control mb-2" placeholder="Buscar por descrição..." id="filtroDescricao">
+    <input type="number" class="form-control mb-2" placeholder="Buscar por ID" id="filtroId">
+    <input type="text" class="form-control mb-2" placeholder="Responsável" id="filtroResponsavel">
+    <input type="text" class="form-control mb-2" placeholder="Cidade" id="filtroCidade">
+    <input type="text" class="form-control mb-2" placeholder="Estado" id="filtroEstado">
+    <input type="date" class="form-control mb-2" placeholder="Data de Evento" id="filtroDataEvento">
+    <input type="date" class="form-control mb-3" placeholder="Data de Criação" id="filtroDataCriacao">
 
-    <main class="container_todos_Projetos">
-        <div class="quadro" id="A_Fazer">
-            <h2 style="font-size: 30pt; color: rgb(255, 255, 255);padding-bottom: 18px;">A Fazer</h2>
-            <div class="cartao" draggable="true">
-                <div class="bola_verde"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 1 Casa</h3>
-                <p>Rua dos aviões Bloco 1 Apto. 500</p>
-                <p>José Matias</p>
-                <p>21/05/2025</p>
-                <p>R$ 25.000</p>
-                <div class="container_botoes_do_cartao">
-                    <button class="botao_ver_Projeto">Ver projeto</button>
-                    <button class="botao_adicionar_funcionario"><img src="imagens/icone_adicionar_funcionario_semFundo.png" alt="img_adicionar_funcionário" width="70px"></button>
-                </div>
-              </div>
-              <div class="cartao" draggable="true">
-                <div class="bola_verde"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 2 Casas</h3>
-                <p>Rua dos aviões Bloco 1 Apto. 500</p>
-                <p>José Matias</p>
-                <p>21/05/2025</p>
-                <p>R$ 25.000</p>
-                <div class="container_botoes_do_cartao">
-                    <button class="botao_ver_Projeto">Ver projeto</button>
-                    <button class="botao_adicionar_funcionario"><img src="imagens/icone_adicionar_funcionario_semFundo.png" alt="img_adicionar_funcionário" width="70px"></button>
-                </div>
-              </div>
-           </div>
-        
-           <div class="quadro" id="Em_Desenvolvimento">
-            <h2 style="font-size: 30pt; color: rgb(255, 255, 255);
-            padding-bottom: 18px;">Em Desenvolvimento</h2>
-            <div class="cartao" draggable="true">
-                <div class="bola_amarela"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 3 Casas</h3>
-                <p>Rua dos aviões Bloco 1 Apto. 500</p>
-                <p>José Matias</p>
-                <p>21/05/2025</p>
-                <p>R$ 25.000</p>
-                <div class="container_botoes_do_cartao">
-                    <button class="botao_ver_Projeto">Ver projeto</button>
-                    <button class="botao_adicionar_funcionario"><img src="imagens/icone_adicionar_funcionario_semFundo.png" alt="img_adicionar_funcionário" width="70px"></button>
-                </div>
-              </div>
-              <div class="cartao" draggable="true">
-                <div class="bola_amarela"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 4 Casas</h3>
-                <p>Rua dos aviões Bloco 1 Apto. 500</p>
-                <p>José Matias</p>
-                <p>21/05/2025</p>
-                <p>R$ 25.000</p>
-                <div class="container_botoes_do_cartao">
-                    <button class="botao_ver_Projeto">Ver projeto</button>
-                    <button class="botao_adicionar_funcionario"><img src="imagens/icone_adicionar_funcionario_semFundo.png" alt="img_adicionar_funcionário" width="70px"></button>
-                </div>
-              </div>
-           </div>
-        
-           <div class="quadro" id="Finalizado" >
-            <h2 style="font-size: 30pt; color: rgb(255, 255, 255);padding-bottom: 18px;">Finalizado</h2>
-            <div class="cartao" draggable="true">
-                <div class="bola_vermelha"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 5 Casas</h3>
-                <p>Rua dos aviões Bloco 1 Apto. 500</p>
-                <p>José Matias</p>
-                <p>21/05/2025</p>
-                <p>R$ 25.000</p>
-                <div class="container_botoes_do_cartao">
-                    <button class="botao_ver_Projeto">Ver projeto</button>
-                    <button class="botao_adicionar_funcionario"><img src="imagens/icone_adicionar_funcionario_semFundo.png" alt="img_adicionar_funcionário" width="70px"></button>
-                </div>
-              </div>
-              
-              <div class="cartao" draggable="true">
-                <div class="bola_vermelha"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">Construção de 6 Casas</h3>
-                <p>Rua dos aviões Bloco 1 Apto. 500</p>
-                <p>José Matias</p>
-                <p>21/05/2025</p>
-                <p>R$ 25.000</p>
-                <div class="container_botoes_do_cartao">
-                    <button class="botao_ver_Projeto">Ver projeto</button>
-                    <button class="botao_adicionar_funcionario"><img  src="imagens/icone_adicionar_funcionario_semFundo.png" alt="img_adicionar_funcionário" width="70px"></button>
-                </div>
-              </div>
-           </div>
-    </main >
-    <button class="circulo_adicionar_projeto" onclick="adicionar_projeto()"><p>+</p></button>
+    <button id="aplicarFiltro" class="btn btn-primary w-100">Aplicar</button>
+  </div>
+
+  <!-- Área de Projetos -->
+  <main class="container_todos_Projetos px-4 py-3">
+    <div class="quadro" id="coluna-afazer">
+      <div class="titulo_coluna">A Fazer</div>
+      <div class="area_cartoes" data-status="afazer"></div>
+    </div>
+    <div class="quadro" id="coluna-emdev">
+      <div class="titulo_coluna">Em Desenvolvimento</div>
+      <div class="area_cartoes" data-status="emdev"></div>
+    </div>
+    <div class="quadro" id="coluna-finalizado">
+      <div class="titulo_coluna">Finalizado</div>
+      <div class="area_cartoes" data-status="finalizado"></div>
+    </div>
+
+    <div id="modoLista" class="d-none" >
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Tag</th>
+            <th>Data</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Responsável</th>
+          </tr>
+        </thead>
+        <tbody id="listaOsBody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Overlay -->
+  <div id="overlayDrawer" class="drawer-overlay"></div>
+
+  <button class="circulo_adicionar_projeto" onclick="window.location.href='tela_projeto_Individual.html'">
+    <i class="bi bi-plus-lg fs-2"></i>
+  </button>
+
 
     <script type="module" src="/src/main.js"></script>
-    <script>
-
-      var numero_card_novo;
-      /*Interação do Botão circular com um + */
-        function adicionar_projeto(){
-          let chaves = [];
-          for (let i = 0; i < localStorage.length; i++) {
-            const chave = localStorage.key(i);
-            if(chave.startsWith("card")){
-              chaves.push(chave);
-            }
-          }
-          if(chaves.length == 0){
-            numero_card_novo = 0;
-            localStorage.setItem('numero_card_novo', JSON.stringify(numero_card_novo)); 
-          }else{
-            numero_card_novo = JSON.parse(localStorage.getItem('numero_card_novo'));
-            numero_card_novo++;
-            localStorage.setItem('numero_card_novo', JSON.stringify(numero_card_novo)); 
-          }
-
-          window.location.href = "tela_projeto_Individual.html";
-      }
-
-          /*Interação do Menu*/
-          var status_menu = false; 
-
-function abrir_opcoes_do_Menu(){
-
-  status_menu = !status_menu;
-  if(status_menu==true){
-    if (tema['status'] == 'claro') {
-      document.getElementById("botao_menu").innerHTML = lua;
-    }else{
-      document.getElementById("botao_menu").innerHTML = sol;
-    }
-}else{document.getElementById("botao_menu").innerHTML = `<div></div>`}
-  
-} 
-
-   
-   
-//Mudar tema do site
-var tema = JSON.parse(localStorage.getItem('Tema'));
-      var link = document.getElementById('folha_de_estilos');
-      var imagem_tema = document.getElementById('imagem_tema');
-      var img_tema_claro = 'imagens/menu_sanduiche-semfundo.png'; 
-      var img_tema_escuro = 'imagens/menu_sanduiche_mod_escuro-semfundo.png'; 
-      var sol =   `
-  <div class="container_opcoes_menu">
-      <ul>
-          <li><button onclick="mudar_tema()" class="botao_mudar_tema_menu">Tema Claro<img  src="imagens/sol_semFundo.png" alt="img_sol" width="40px" height="40px" style="border-radius: 100%; margin-left: 10px;"></button></li>
-          <li><a href="editar_Perfil.html">Editar Perfil</a></li>
-          <li><a href="alterar_Login.html">Alterar Login</a></li>
-          <li><a href="index.html">Sair</a></li>
-      </ul>
-  </div> 
-  `;
-
-  var lua =   `
-  <div class="container_opcoes_menu">
-      <ul>
-          <li><button onclick="mudar_tema()" class="botao_mudar_tema_menu">Tema Escuro<img  src="imagens/lua.png" alt="img_lua" width="40px" height="40px" style="border-radius: 100%; margin-left: 10px;"></button></li>
-          <li><a href="editar_Perfil.html">Editar Perfil</a></li>
-          <li><a href="alterar_Login.html">Alterar Login</a></li>
-          <li><a href="index.html">Sair</a></li>
-      </ul>
-  </div> 
-  `;
-
-      if(!tema){
-            tema = {};
-            tema['status'] = 'claro';
-            imagem_tema.src = img_tema_claro; 
-          }
-          
-
-      function mudar_tema(){
-        if (tema['status'] == 'claro') {
-          tema['status'] = 'escuro';
-          link.href = "stylesEscuro.css";
-          imagem_tema.src = img_tema_escuro;
-          document.getElementById("botao_menu").innerHTML = sol;
-
-
-
-        } else {
-          tema['status'] = 'claro';
-          link.href = "styles.css";
-          imagem_tema.src = img_tema_claro;
-          document.getElementById("botao_menu").innerHTML = lua;
-
-        }
-        localStorage.setItem('Tema', JSON.stringify(tema)); 
-      }
-
-      //Roda quando o DOM inicializa para ver o tema do site
-      document.addEventListener('DOMContentLoaded', function () { 
-         
-        if(!tema){
-            tema = {};
-            tema['status'] = 'claro';
-            imagem_tema.src = img_tema_claro;
-            //botao_mudar_tema.innerHTML = botao_mudar_para_escuro;
-          }else{
-            if (tema['status'] == 'claro') {
-              tema['status'] = 'claro';
-              link.href = "styles.css";
-              imagem_tema.src = img_tema_claro;
-              //botao_mudar_tema.innerHTML = botao_mudar_para_escuro;
-            } else {
-              tema['status'] = 'escuro';
-              link.href = "stylesEscuro.css";
-              imagem_tema.src = img_tema_escuro;
-              //botao_mudar_tema.innerHTML = botao_mudar_para_claro;
-            }
-          }
-        });
-        
-
-        var cards_adicionados = [];
-        //Iniciaçização da pagina
-          var chaves = [];
-          var num_das_chaves = [];
-          for (let i = 0; i < localStorage.length; i++) {
-            if(localStorage.key(i).startsWith("card")){
-              chaves.push(localStorage.key(i));
-              num_das_chaves.push(chaves[i].replace('card',''));
-            } 
-          }
-         //console.log(chaves);
-         //console.log(num_das_chaves);
-          if(cards_adicionados.length != chaves.length){
-            let num_da_ultima_chave = Math.max(...num_das_chaves);
-            let cartao = JSON.parse(localStorage.getItem(`card${num_da_ultima_chave}`));
-            const temp = document.createElement('div');
-            temp.innerHTML = `
-              <div class="cartao" draggable="true">
-                <div class="bola_verde"></div>
-                <h3 style="padding-bottom: 20px; text-align: center;">${cartao['Nome_do_Projeto']}</h3>
-                <p>${cartao['Endereco_da_obra']}</p>
-                <p>${cartao['Responsavel_pela_obra']}</p>
-                <p>${cartao['Data_de_conclusao_da_obra']}</p>
-                <p>${cartao['Descricao_do_projeto']}</p>
-                <div class="container_botoes_do_cartao">
-                    <button class="botao_ver_Projeto">Ver projeto</button>
-                    <button class="botao_adicionar_funcionario"><img src="imagens/icone_adicionar_funcionario_semFundo.png" alt="img_adicionar_funcionário" width="70px"></button>
-                </div>
-              </div>
-            `;
-            // Pega o primeiro filho real do container temporário
-            const card_novo = temp.firstElementChild;
-            document.getElementById('A_Fazer').appendChild(card_novo);
-            cards_adicionados.push(`card${num_da_ultima_chave}`);
-            localStorage.setItem('cards_adicionados', JSON.stringify(cards_adicionados)); 
-          }
-
-
-/*Tem que fazer a parte de reaload(){
-
-}
-*/
-       
-// Sessão onde faremos a movimentação dos cards
-//dragstart -> Quando o usuário começa a arrastar um elemento.
-//dragend -> Quando o usuário solta o item (seja onde for).
-//dragover ->  Quando um item arrastado está passando por 
-//            cima de outro elemento (geralmente um contêiner onde 
-//            ele pode ser solto).
-//dragleave -> Quando o item sendo arrastado sai de um elemento (sem ser solto nele).
-//drop -> Quando o usuário solta o item em cima de um contêiner válido.
-var cartoes = document.querySelectorAll('.cartao');
-var quadros = document.querySelectorAll('.quadro');  
-
-// Variável auxiliar para guardar o cartão sendo arrastado
-cartoes.forEach(cartao => {
-      cartao.addEventListener('dragstart', () => {
-        cartao.classList.add('dragging');
-      });
-
-      cartao.addEventListener('dragend', () => {
-        cartao.classList.remove('dragging');
-      });
-    });
-
-    quadros.forEach(quadro => {
-      quadro.addEventListener('dragover', e => {
-        e.preventDefault();
-        quadro.classList.add('drag-over');
-      });
-
-      quadro.addEventListener('dragleave', () => {
-        quadro.classList.remove('drag-over');
-      });
-
-      quadro.addEventListener('drop', e => {
-        e.preventDefault();
-        const dragging = document.querySelector('.dragging');
-        quadro.appendChild(dragging);
-        quadro.classList.remove('drag-over');
-
-
-    // Atualiza a cor das bolinhas com base no quadro
-    atualizarCoresDosCartoes();
-  });
-});
-
-
-         /*Confere a cor das bolinhas verde, amarela e vermelha*/
-    function atualizarCoresDosCartoes(){
-    var A_Fazer = document.getElementById('A_Fazer');
-    for(let i=1 ; i < A_Fazer.children.length ; i++ ){
-      const cartao_Green  = A_Fazer.children[i];
-      if (!(cartao_Green.classList.contains('bola_verde'))) {
-        cartao_Green.children[0].style.backgroundColor = 'green';
-      }}
-
-    var Em_Desenvolvimento = document.getElementById('Em_Desenvolvimento');
-    for(let i=1 ; i < Em_Desenvolvimento.children.length ; i++ ){
-      const cartao_Yellow  = Em_Desenvolvimento.children[i];
-      if (!(cartao_Yellow.classList.contains('bola_amarela'))) {
-        cartao_Yellow.children[0].style.backgroundColor = 'yellow';
-      }}
-    
-    var Finalizado = document.getElementById('Finalizado');
-    for(let i=1 ; i < Finalizado.children.length ; i++ ){
-      const cartao_Red  = Finalizado.children[i];
-      if (!(cartao_Red.classList.contains('bola_verde'))) {
-        cartao_Red.children[0].style.backgroundColor = 'red';
-      }}
-    }
-
-
-    </script>
+    <script type="module" src="/src/projetos.js"></script>
   </body>
 </html>

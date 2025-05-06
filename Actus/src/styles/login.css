@@ -1,0 +1,114 @@
+body.container_body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.conteiner_Principal {
+  background-color: var(--cor-fundo-card);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.container_Titulo {
+  font-weight: 600;
+  font-size: 30pt;
+  text-align: center;
+  padding-bottom: 10px;
+  color: var(--cor-texto-principal);
+}
+
+.container_logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nome_Actus {
+  color: var(--cor-texto-secundario);
+  font-size: 20pt;
+  font-weight: 600;
+}
+
+.form-label {
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--cor-texto-principal);
+}
+
+.container_input {
+  width: 100%;
+  margin-top: 5px;
+  padding: 12px 15px;
+  border-radius: 15px;
+  border: 1px solid var(--cor-borda-input);
+  background-color: var(--cor-fundo-card);
+  color: var(--cor-texto-principal);
+  transition: border-color 0.3s ease;
+}
+
+.container_input:focus {
+  border-color: var(--cor-primaria);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(57, 155, 226, 0.2);
+}
+
+.btn-toggle-senha {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(13%);
+  background: none;
+  border: none;
+  color: var(--cor-primaria);
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.3rem;
+  transition: color 0.3s;
+}
+
+.btn-toggle-senha:hover {
+  color: var(--cor-primaria-hover);
+}
+
+.botao {
+  margin-top: 30px;
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto-botao);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 15px;
+  padding: 12px;
+  border: none;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.botao:hover {
+  background-color: var(--cor-primaria-hover);
+}
+
+#opcoes_login {
+  font-size: 11pt;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.outra_opcao {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+}
+
+.outra_opcao:hover {
+  color: var(--cor-primaria-hover);
+}

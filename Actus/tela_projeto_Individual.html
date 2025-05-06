@@ -1,590 +1,111 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="imagens/logo_actus.ico" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="imagens/logo_actus.ico"
+      type="image/x-icon"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Actus</title>
-    <link rel="stylesheet" href="styles.css" id="folha_de_estilos">
-
-    <style>
-      .bg-body-tertiary{
-  background-color: red;
-}
-.teste{
-  background-color: red !important;
-}
-    </style>
   </head>
-  <body>
-
-    <nav class="container_navegacao" style="justify-content: flex-end;">
+  <body class="fade-in">
+    <div class="container my-5 form-container position-relative">
       
-        <div style="padding-right: 50px;" class="div_logo_menu">
-                <div class="container_logo_Tela_ins_Cod">
-                    <img src="imagens/logo_actus.png" alt="logo">
-                    <h2 style="color: #095185; font-size: 18pt;">Actus</h2>
-                </div>
-                <button class="botao_menu_sanduiche" onclick="abrir_opcoes_do_Menu()">
-                    <img id="imagem_tema" src="imagens/menu_sanduiche-semfundo.png" width="60" height="60" alt="menu_sanduíche">
-                </button>
-        </div>   
-   </nav>
-    
-    <div id="botao_menu"></div>
-    
-    <main style="display: flex;justify-content: start; align-items: flex-start;">
-    <div class="conteiner_esqueceu_Senha" style="height: fit-content;margin-left: 100px; width: 550px;">
-        <h1 style="text-align: center; font-size: 40pt;">Detalhes iniciais:</h1>
-        <div class="container_logo">
-            <img src="imagens/logo_actus.png" alt="logo">
-          <h2 class="nome_Actus" style="font-size: 20pt;">Actus</h2>
-          </div>
-      <form>
-        <label class="label_digite_email">Nome do Projeto:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;" type="text" class="container_input" placeholder="Construção de uma casa" id="Nome_do_Projeto">
-        <label class="label_digite_email">Endereço da obra:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="Rua dos Aviões, 333" id="Endereco_da_obra">
-        <label class="label_digite_email">Responsável pela obra:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;"  type="text" class="container_input" placeholder="João Firmino" id="Responsavel_pela_obra">
-        <label class="label_digite_email">Data de conclusão da obra:</label>
-        <input style="margin-top: 0px; margin-bottom: 20px;"  type="date" class="container_input" id="Data_de_conclusao_da_obra">
-        <label class="label_digite_email">Decrição do projeto:</label>
-        <textarea class="Area_de_texto" placeholder="Foi solicitado uma restauração do pisa da sala de estar" rows="3" cols="50" id="Descricao_do_projeto"></textarea>
-        <label class="label_digite_email">Etapas do Projeto:</label>
-        <select id="lista_de_etapas" class="caixa_de_selecao" style="display: none;" >
-          </select>
-          <button style="margin-top: 10px;display: none;" type="button"  class="botao" onclick="Ver_Etapas()" id="botao_ver_etapas">Ver Etapas</button>
-          <button style="margin-top: 10px;" type="button"  class="botao" onclick="botao_Nova_Etapa()">Nova Etapa</button>
-      </form>
-    </div>
-
-    <div class="conteiner_esqueceu_Senha" style="height: fit-content;width: 600px;margin-left: 100px;margin-right: 100px; margin-bottom: 100px;" >
-        <h1 style="text-align: center; font-size: 40pt;" id="topico_segunda_tela">Nova Etapa:</h1>
-        <div class="container_logo">
-            <img src="imagens/logo_actus.png" alt="logo">
-          <h2 class="nome_Actus" style="font-size: 20pt;">Actus</h2>
-          </div>
-      <form id="formulario_da_Etapa">
-        <div class="itens_da_etapa">
-            <input name="Nome_da_Etapa" type="text" class="container_input caixaDeTexto_checkBOX" style="width: 100%;background-color: #77aeff6e; font-size: 20pt;" id="nome_etapa">
-        </div>
-        <div id="linhas_novas">
-          <div class="itens_da_etapa">
-            <input name="Atividade0" type="text" class="container_input caixaDeTexto_checkBOX">
-            <input name="marcado0" type="checkbox" class="botao_checkBox">
-            <button type="button" class="botao botao_upload botao_deletar_linha" onclick="deletar_Linha(this)">X</button>
-          </div>
-        </div>
-        <button type="button" style="margin-right: 10px; margin-left: 0px; font-size: 24pt;padding: 0px; width: 50px; height: 50px; border-radius: 100%;" class="botao botao_upload" onclick="adicionar_linha_nova()">+</button>
-        <div style="display: flex; justify-content: flex-end;">
-          <button type="button"  class="botao botao_upload botao_upload2" onclick="botao_upload_arquivos()"><img style="width: 50px; " src="imagens/upload_de_arquivos_semFundo.png" alt="upload_de_arquivos_semFundo"></button>
-          <button type="button"  class="botao botao_upload botao_upload2" onclick="botao_upload_arquivos()"><img style="width: 50px; " src="imagens/img_pasta_arquivos_sem_fundo.png" alt="upload_de_arquivos_semFundo"></button>
-        </div>
-        <button type="button" class="botao botao_excluir_etapa" onclick="botao_excluir_etapa()">Excluir Etapa</button>
-        <button type="submit" style="margin-top: 10px;"   class="botao" >Salvar Etapa</button>
-        <input name="ignore" type="file" id="fileUpload" style="display: none;"/>
-      </form>
-    </div>
-
-    <div style="display: flex; flex-direction: column;">
-      <div class="container_elementos_preview" >
-        <div id="preview"></div>
-      </div>
-      <div style="margin-top: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <button type="button" style="font-size: 25pt; width: 400px;" class="botao botao_excluir_etapa" onclick="botao_excluir_projeto()">Excluir Projeto</button>
-        <button type="button" style="margin-top: 10px; font-size: 25pt; width: 400px;" class="botao" onclick="botao_salvar_projeto()">Salvar Projeto</button>
-        </div>
-    </div>
-
-    </main>
-
-
-
-
-
-    <script type="module" src="/src/main.js"></script>
-    <script>
-
-
-
-    var numero_card = 0;
-    let todos_os_cards = [];
-          for (let i = 0; i < localStorage.length; i++) {
-            const chave = localStorage.key(i);
-            if(chave.startsWith("card")){
-              todos_os_cards.push(chave);
-            }
-          }
-    if(todos_os_cards.length != 0){
-      numero_card = JSON.parse(localStorage.getItem('numero_card_novo')).length;
-    }
-
-
-    var num_pos_etapa = 5;//falta ajeitar aqui... e tem que colocar la na parte de salvar eta e de excluir um objeto que vai dizer {card0 : 12 } por exemplo e esse 12 seria a posição de referencia que poarou 
-    if(){
-      num_pos_etapa = JSON.parse(localStorage.getItem(`card${numero_card}`)).length;
-    }
-
-    var card = [];    
-
-    //excluir o projeto
-    function botao_excluir_projeto(){
-      //falta implementar
-    }
-
-
-    function botao_salvar_projeto(){
-      const Nome_do_Projeto = document.getElementById('Nome_do_Projeto');
-      const Endereco_da_obra = document.getElementById('Endereco_da_obra');
-      const Responsavel_pela_obra = document.getElementById('Responsavel_pela_obra');
-      const Data_de_conclusao_da_obra = document.getElementById('Data_de_conclusao_da_obra');
-      const Descricao_do_projeto = document.getElementById('Descricao_do_projeto');
-
-      card[0] = Nome_do_Projeto.value;
-      card[1] = Endereco_da_obra.value;
-      card[2] = Responsavel_pela_obra.value;
-      card[3] = Data_de_conclusao_da_obra.value;
-      card[4] = Descricao_do_projeto.value;
-
-      localStorage.setItem(`card${numero_card}`, JSON.stringify(card)); 
-      /*
-      for(let i=0 ; i < Etapas_do_Projeto.options.length ; i++){
-        cards['Etapa0'] = Etapas_do_Projeto.options[i].text;
-      }*/
-
-      window.location.href = "tela_de_Projetos.html";
-  }
-/////////////////CARREGAMENTO DE UM PROJETO//////////////////////
-
-
-/////////////////////////////////////////////////////////////////
-
-        function botao_upload_arquivos(){
-            const botao_abrir_arquivos = document.getElementById('fileUpload');
-            botao_abrir_arquivos.click();
-        }
-/*Interação do Menu*/
-var status_menu = false; 
-
-function abrir_opcoes_do_Menu(){
-
-  status_menu = !status_menu;
-  if(status_menu==true){
-    if (tema['status'] == 'claro') {
-      document.getElementById("botao_menu").innerHTML = lua;
-    }else{
-      document.getElementById("botao_menu").innerHTML = sol;
-    }
-}else{document.getElementById("botao_menu").innerHTML = `<div></div>`}
+      <!-- Botão de sair (fora do form) -->
+      <a href="tela_de_Projetos.html" class="btn btn-ficheiro-style position-absolute top-0 start-0 m-3 z-3">
+        <i class="bi bi-arrow-left"></i> Sair
+      </a>
   
-} 
-
-/*código da para pegar o arquivo e visualização*/
-const input = document.getElementById('fileUpload');
-    const preview = document.getElementById('preview');
-
-    input.addEventListener('change', () => {
-      const file = input.files[0];
-      preview.innerHTML = ""; // Limpa prévia anterior
-
-      if (!file) return;
-
-      const fileURL = URL.createObjectURL(file);
-      const fileType = file.type;
-
-      if (fileType.startsWith("image/")) {
-        const img = document.createElement("img");
-        img.src = fileURL;
-        img.style.maxWidth = "100%";
-        img.style.maxHeight = "600px";
-        preview.appendChild(img);
-      } 
-      else if (fileType === "application/pdf") {
-        const embed = document.createElement("embed");
-        embed.src = fileURL;
-        embed.type = "application/pdf";
-        embed.width = "100%";
-        embed.height = "600px";
-        preview.appendChild(embed);
-      } 
-      else if (fileType.startsWith("video/")) {
-        const video = document.createElement("video");
-        video.src = fileURL;
-        video.controls = true;
-        video.width = 600;
-        preview.appendChild(video);
-      }
-      else if (fileType.startsWith("audio/")) {
-        const audio = document.createElement("audio");
-        audio.src = fileURL;
-        audio.controls = true;
-        preview.appendChild(audio);
-      }
-      else if (fileType.startsWith("text/") || file.name.endsWith(".txt")) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const text = document.createElement("pre");
-          text.textContent = reader.result;
-          preview.appendChild(text);
-        };
-        reader.readAsText(file);
-      } 
-      else {
-        preview.textContent = "Pré-visualização não disponível para esse tipo de arquivo.";
-      }
-    });
-
-    /*Função para adiconar um novo item da lista da Etapa*/
-    var numero = 1;
-    function adicionar_linha_nova(){
-      const Linha = document.createElement('div');
-      Linha.innerHTML =  
-      `
-        <div class="itens_da_etapa">
-            <input name="Atividade${numero}" type="text" class="container_input caixaDeTexto_checkBOX">
-            <input name="marcado${numero}" type="checkbox" class="botao_checkBox">
-            <button type="button" class="botao botao_upload botao_deletar_linha" onclick="deletar_Linha(this)">X</button>
+      <form id="osForm" class="mt-5 pt-4">
+  
+        <!-- Título -->
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Título do Projeto</label>
+          <input type="text" class="form-control container_input" id="titulo" required />
         </div>
-       `;
-       numero++; 
-       document.getElementById('linhas_novas').appendChild(Linha);
-    }
-
-    //inicialização dos numeros das Etapas
-    const keys_local_storage = Object.keys(localStorage);
-      var vetor = [];
-      var j = 0;
-      for (let i = 0; i < keys_local_storage.length; i++) {
-        if (keys_local_storage[i].startsWith("Etapa")) {
-          const n_aux = keys_local_storage[i].replace("Etapa", "");
-          vetor[j] = n_aux;
-          j++;
-        }}
-        var numero_da_Etapa;
-    if(vetor.length == 0){
-      numero_da_Etapa = 0;
-    }
-    else{numero_da_Etapa = Math.max(...vetor) + 1;} 
+  
+        <!-- Descrição -->
+        <div class="mb-3">
+          <label for="descricao" class="form-label">Descrição do Projeto</label>
+          <textarea class="form-control container_input" id="descricao" rows="3"></textarea>
+        </div>
+  
+        <!-- Estado e Cidade -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="estado" class="form-label">Estado</label>
+            <select id="estado" class="form-select container_input" required>
+              <option disabled selected>Selecione</option>
+              <option>SP</option>
+              <option>RJ</option>
+              <option>MG</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="cidade" class="form-label">Cidade</label>
+            <select id="cidade" class="form-select container_input" required>
+              <option disabled selected>Selecione</option>
+              <option>São Paulo</option>
+              <option>Rio de Janeiro</option>
+              <option>Belo Horizonte</option>
+            </select>
+          </div>
     
-    
+        </div>
+        <div class="mb-3">
+          <label for="endereço" class="form-label">Endereço</label>
+          <textarea class="form-control container_input" id="endereço" rows="3"></textarea>
+        </div>
 
+        <!-- Datas -->
+        <div class="row mb-3 align-items-end">
+          <div class="col-md-6">
+            <label for="data" class="form-label">Data Inicial</label>
+            <input type="date" class="form-control container_input" id="data" />
+          </div>
+          <div class="col-md-6">
+            <label for="data" class="form-label">Data Final</label>
+            <input type="date" class="form-control container_input" id="dataFinal" />
+          </div>
+        </div>
 
   
-    /*Função para deletar item  da Etapa*/
-    var posicao;
-    function deletar_Linha(botao_delete){
-      const divPai = botao_delete.parentElement;
-      const NOME_DA_ETAPA = document.getElementById('nome_etapa').value;
-      const inputs = divPai.querySelectorAll('input')
-      try{
-        
-      let dados_atualizados = JSON.parse(localStorage.getItem(`Etapa${numero_da_Etapa}`));
-
-      inputs.forEach(input=>{
-        delete dados_atualizados[input.name];
-      });
-
-      localStorage.setItem(`Etapa${numero_da_Etapa}`, JSON.stringify(dados_atualizados));
-
-      }catch{}
-
-      divPai.remove();
-    }
-
-
-    //Dicionario para traduzir nome_da_etapa para Etapa"numero"
-    var dicionario_de_etapas;
-    if(localStorage.getItem("dicionario_de_etapas") == null){
-      dicionario_de_etapas = {};
-      console.log('vaia');
-    }
-    else{
-      dicionario_de_etapas = JSON.parse(localStorage.getItem('dicionario_de_etapas'));
-      console.log('nao bvazia');
-    }
-    
-
-
-
-      var dados;
-    /*Salva uma nova ETAPA na lista(select)*/
-      var num_item = 1;
-      
-      const formulario = document.getElementById('formulario_da_Etapa');
-
-      formulario.addEventListener('submit', function(event) {
-      event.preventDefault(); // impede o envio tradicional do formulário
-
-      dados = {};
-      
-      const caixas_de_textos = formulario.querySelectorAll('input[type="text"]');
-      const checkboxes = formulario.querySelectorAll('input[type="checkbox"]');
-
-
-      caixas_de_textos.forEach(caixas_de_textos => {
-        dados[caixas_de_textos.name] = caixas_de_textos.value; 
-      });
-       
-      checkboxes.forEach(checkboxes => {
-        dados[checkboxes.name] = checkboxes.checked;
-      });
-
-      var problema = false;
-      if(dados[caixas_de_textos[0].name] == ''){
-          alert('Essa Etapa está sem nome, escolha um nome.');
-          problema = true;}
-
-        if(problema == false){
-          localStorage.setItem(`Etapa${numero_da_Etapa}`, JSON.stringify(dados));  
-          card[num_pos_etapa] = `Etapa${numero_da_Etapa}`;
-          num_pos_etapa++;
-          localStorage.setItem(`card${numero_card}`, JSON.stringify(card));   
-          dicionario_de_etapas[`Etapa${numero_da_Etapa}`] = dados[caixas_de_textos[0].name];
-          localStorage.setItem('dicionario_de_etapas', JSON.stringify(dicionario_de_etapas)); 
-          numero_da_Etapa++;
-        
-          const ListaDeEtapas = document.getElementById('lista_de_etapas');
-
-          const novaOpcao = document.createElement('option');
-          novaOpcao.value = `item${num_item}`;
-          novaOpcao.text = dados[caixas_de_textos[0].name];
-          num_item++;
-
-          ListaDeEtapas.appendChild(novaOpcao);
-          alert('Etapa salva com sucesso!');
-          document.getElementById('lista_de_etapas').style.display = 'block';
-           
-          for (let i = 0; i < ListaDeEtapas.options.length; i++) {
-            if (ListaDeEtapas.options[i].text === dados[caixas_de_textos[0].name]) {
-              ListaDeEtapas.selectedIndex = i;
-              break;
-            }
-          }
-        }
-    });
-
-    // Gera o processo de criação de uma nova etapa
-    function botao_Nova_Etapa(){
-      document.getElementById('topico_segunda_tela').innerText = 'Etapa';
-      const lista = document.getElementById('lista_de_etapas');
-      document.getElementById('formulario_da_Etapa').reset();
-      document.getElementById('linhas_novas').innerHTML = '';
-      adicionar_linha_nova();
-      document.getElementById('nome_etapa').focus();
-      document.getElementById('topico_segunda_tela').innerText = 'Nova Etapa:';
-      document.getElementById('lista_de_etapas').style.display = 'none';
-      
-      if(lista.length != 0){
-        document.getElementById('botao_ver_etapas').style.display = 'block';
-      }else{document.getElementById('botao_ver_etapas').style.display = 'none';}
-           
-    }
-
-     
-     
-     const Lista_todas_Etapas = document.getElementById('lista_de_etapas');
-     Lista_todas_Etapas.addEventListener('change', () => {
-      carrega_dados_da_Etapa();
-    });
-
-
-    
-
-    // Busca valor da Lista-de-Etapas joga os valores no container chamado "Etapa"
-    function carrega_dados_da_Etapa(){
-      document.getElementById('formulario_da_Etapa').reset();
-      document.getElementById('linhas_novas').innerHTML = '';
-
-      let indice_do_selecionado = Lista_todas_Etapas.selectedIndex 
-      let Nome_Etapa_selecionada = Lista_todas_Etapas.options[indice_do_selecionado].text;
-      var objeto_Etapa;
-      for(let c in dicionario_de_etapas){
-        if(dicionario_de_etapas[c] == Nome_Etapa_selecionada){
-          objeto_Etapa = JSON.parse(localStorage.getItem(c));
-          break;
-        }
-      }
-      
-      document.querySelector('input[name="Nome_da_Etapa"]').value = objeto_Etapa['Nome_da_Etapa'];
-
-      var Tamanho_Objeto = Object.keys(objeto_Etapa).length;
-  
-
-      Object.keys(objeto_Etapa).forEach((chave, i) => {
-        if (chave.startsWith("Atividade")) {
-          const num = chave.replace("Atividade", "");
-          
-          const Linha = document.createElement('div');
-          Linha.innerHTML =  
-          `
-            <div class="itens_da_etapa">
-                <input name="Atividade${num}" type="text" class="container_input caixaDeTexto_checkBOX">
-                <input name="marcado${num}" type="checkbox" class="botao_checkBox">
-                <button type="button" class="botao botao_upload botao_deletar_linha" onclick="deletar_Linha(this)">X</button>
+        <!-- Arquivo -->
+        <div class="mb-4">
+          <label for="ficheiro" class="form-label">Arquivo (.pdf / .png)</label>
+          <div class="d-flex gap-2">
+            <input type="file" id="ficheiro" class="form-control container_input" />
+            <button type="button" id="btnExportar" class="btn btn-ficheiro-style">Exportar</button>
+          </div>
+          <div id="preview" class="mt-2"></div>
+        </div>
+        <!-- <div class="container my-4">
+          <div class="row" id="container-cards">
+            <div class="col-md-4">
+              <div class="card_os position-relative">
+                <button class="btn-close-custom" aria-label="Fechar">&times;</button>
+                <span class="preco">R$ 199,90</span>
+                <h3>Produto 1</h3>
+                <p>Descrição do produto aqui.</p>
+              </div>
             </div>
-          `;
-          
-          document.getElementById('linhas_novas').appendChild(Linha);
-
-          document.querySelector(`input[name=Atividade${num}]`).value = objeto_Etapa[`Atividade${num}`];
-          document.querySelector(`input[name=marcado${num}]`).checked = objeto_Etapa[`marcado${num}`];
-        }
-      });
-     }
-
-
-
-
-    //Exluir Etapa
-    function botao_excluir_etapa(){
-
-      const ListaDeEtapas = document.getElementById('lista_de_etapas');
-      
-      if(document.getElementById('nome_etapa').value != ''){
-        try{
-          for(let c in dicionario_de_etapas){
-            if(dicionario_de_etapas[c] == ListaDeEtapas.options[ListaDeEtapas.selectedIndex].text){
-              localStorage.removeItem(c);
-              delete dicionario_de_etapas[c];
-              for(let i=5;i < card.length ; i++){
-                if(card[i] == c){
-                  card.splice(i, 1);
-                  num_pos_etapa--;
-                  localStorage.setItem(`card${numero_card}`, JSON.stringify(card));
-                }
-              }
-              localStorage.setItem('dicionario_de_etapas', JSON.stringify(dicionario_de_etapas)); 
-              break;
-            }
-          }
-          ListaDeEtapas.options[ListaDeEtapas.selectedIndex].remove(); 
-          ListaDeEtapas.selectedIndex = 0;
-          carrega_dados_da_Etapa();
-        }catch(erro){
-          document.getElementById('formulario_da_Etapa').reset();
-          const linhas = document.querySelectorAll('.itens_da_etapa');
-          for(let i=2 ; i < linhas.length ; i++ ){
-          linhas[i].remove();}
-        }
-      }else{
-        document.getElementById('formulario_da_Etapa').reset();
-        const linhas = document.querySelectorAll('.itens_da_etapa');
-        for(let i=2 ; i < linhas.length ; i++ ){
-        linhas[i].remove();}
-        }
-
-        if(ListaDeEtapas.length == 0){
-          botao_Nova_Etapa();
-        }
-    }
-
-    //função para ver a lista com todas as Etapas
-    function Ver_Etapas(){
-
-      document.getElementById('topico_segunda_tela').innerText = 'Etapa:';
-      const lista = document.getElementById('lista_de_etapas');
-      
-      if(lista.length > 0){
-        lista.style.display = 'block';
-        lista.selectedIndex = 0;
-        carrega_dados_da_Etapa();
-        document.getElementById('botao_ver_etapas').style.display = "none";
-      }
-      lista.style.display = 'block';
-    }
-
-
-    //Evento para analisar o que será feito antes da página fazer um reload
-   /* window.addEventListener("beforeunload", function (e) {
-      e.preventDefault(); // necessário para alguns navegadores
-      e.returnValue = ""; // dispara o alerta de confirmação padrão do navegador
-    });*/
-      
-
- //Mudar tema do site
-var tema = JSON.parse(localStorage.getItem('Tema'));
-      var link = document.getElementById('folha_de_estilos');
-      var imagem_tema = document.getElementById('imagem_tema');
-      var img_tema_claro = 'imagens/menu_sanduiche-semfundo.png'; 
-      var img_tema_escuro = 'imagens/menu_sanduiche_mod_escuro-semfundo.png'; 
-      var sol =   `
-  <div class="container_opcoes_menu">
-      <ul>
-          <li><button onclick="mudar_tema()" class="botao_mudar_tema_menu">Tema Claro<img  src="imagens/sol_semFundo.png" alt="img_sol" width="40px" height="40px" style="border-radius: 100%; margin-left: 10px;"></button></li>
-          <li><a href="tela_de_Projetos.html">Meus Projetos</a></li>
-          <li><a href="editar_Perfil.html">Editar Perfil</a></li>
-          <li><a href="alterar_Login.html">Alterar Login</a></li>
-          <li><a href="index.html">Sair</a></li>
-      </ul>
-  </div> 
-  `;
-
-  var lua =   `
-  <div class="container_opcoes_menu">
-      <ul>
-          <li><button onclick="mudar_tema()" class="botao_mudar_tema_menu">Tema Escuro<img  src="imagens/lua.png" alt="img_lua" width="40px" height="40px" style="border-radius: 100%; margin-left: 10px;"></button></li>
-          <li><a href="tela_de_Projetos.html">Meus Projetos</a></li>
-          <li><a href="alterar_Login.html">Alterar Login</a></li>
-          <li><a href="index.html">Sair</a></li>
-      </ul>
-  </div> 
-  `;
-
-      if(!tema){
-            tema = {};
-            tema['status'] = 'claro';
-            imagem_tema.src = img_tema_claro; 
-          }
-          
-
-      function mudar_tema(){
-        if (tema['status'] == 'claro') {
-          tema['status'] = 'escuro';
-          link.href = "stylesEscuro.css";
-          imagem_tema.src = img_tema_escuro;
-          document.getElementById("botao_menu").innerHTML = sol;
-
-
-
-        } else {
-          tema['status'] = 'claro';
-          link.href = "styles.css";
-          imagem_tema.src = img_tema_claro;
-          document.getElementById("botao_menu").innerHTML = lua;
-
-        }
-        localStorage.setItem('Tema', JSON.stringify(tema)); 
-      }
-
-      //Roda quando o DOM inicializa para ver o tema do site
-      document.addEventListener('DOMContentLoaded', function () { 
-         //MUDAR TEMA
-        if(!tema){
-            tema = {};
-            tema['status'] = 'claro';
-            imagem_tema.src = img_tema_claro;
-            //botao_mudar_tema.innerHTML = botao_mudar_para_escuro;
-          }else{
-            if (tema['status'] == 'claro') {
-              tema['status'] = 'claro';
-              link.href = "styles.css";
-              imagem_tema.src = img_tema_claro;
-              //botao_mudar_tema.innerHTML = botao_mudar_para_escuro;
-            } else {
-              tema['status'] = 'escuro';
-              link.href = "stylesEscuro.css";
-              imagem_tema.src = img_tema_escuro;
-              //botao_mudar_tema.innerHTML = botao_mudar_para_claro;
-            }
-          }
-
-          //CARREGA DADOS SE FOR DADO UM REFRASH NA PÁGINA
-
-        });
-
-        
-
-    </script>
+            <div class="col-md-4">
+              <div class="card_os position-relative">
+                <button class="btn-close-custom" aria-label="Fechar">&times;</button>
+                <span class="preco">R$ 349,99</span>
+                <h3>Produto 2</h3>
+                <p>Mais detalhes do produto...</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <button type="submit" class="btn btn-ficheiro-style w-100 mt-3">Salvar</button>
+      </form>
+    </div>
+  
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/individual.js"></script>
   </body>
 </html>

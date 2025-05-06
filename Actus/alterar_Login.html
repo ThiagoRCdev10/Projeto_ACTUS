@@ -5,165 +5,45 @@
     <link rel="shortcut icon" href="imagens/logo_actus.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Actus</title>
-    <link rel="stylesheet" href="styles.css" id="folha_de_estilos">
-
   </head>
   <body>
 
-    <nav class="container_navegacao" style="justify-content: flex-end;">
-      
-      <div style="padding-right: 50px;" class="div_logo_menu">
-              <div class="container_logo_Tela_ins_Cod">
-                  <img src="imagens/logo_actus.png" alt="logo">
-                  <h2 style="color: #095185; font-size: 18pt;">Actus</h2>
-              </div>
-              <button class="botao_menu_sanduiche" onclick="abrir_opcoes_do_Menu()">
-                  <img id="imagem_tema" src="imagens/menu_sanduiche-semfundo.png" width="60" height="60" alt="menu_sanduíche">
-              </button>
-      </div>   
- </nav>
+    <a href="tela_de_Projetos.html" class="btn btn-ficheiro-style position-absolute top-0 start-0 m-3 z-3">
+      <i class="bi bi-arrow-left"></i> Sair
+    </a>
 
- <div id="botao_menu"></div>
-
- <main class="container_posicao_centralizada">
-    <div class="conteiner_esqueceu_Senha" style="height: fit-content;">
-        <h1 style="text-align: center; font-size: 40pt;">Alterar Login</h1>
-      <form>
-        <div class="container_logo">
-          <img src="imagens/logo_actus.png" alt="logo">
-        <h2 class="nome_Actus" style="font-size: 20pt;">Actus</h2>
-        </div>
-        <label class="label_esqueceu_senha">Deseja Alterar E-mail ou Senha?</label>
-        <label class="label_digite_email">Digite seu novo email:</label>
-        <input id="email" style="margin-top: 0px; margin-bottom: 20px;" type="email" class="container_input" placeholder="exemplo@gmail.com">
-        <label class="label_digite_email">Digite sua nova senha:</label>
-        <input id="senha" style="margin-top: 0px; margin-bottom: 20px;"  type="password" class="container_input" placeholder="Senha(8 a 16 caracteres)">
-        <label  class="label_digite_email">Confirme sua nova senha:</label>
-        <input id="senha_rep" style="margin-top: 0px; margin-bottom: 20px;"  type="password" class="container_input" placeholder="Senha(8 a 16 caracteres)">
-        <button style="margin-top: 10px;" type="button"  class="botao" onclick="alterar_login()">Confirmar</button>
-      </form>
-    </div>
-  </main>
-    <script type="module" src="/src/main.js"></script>
-    <script>
-      /*Interação do botão de confirmar*/
-      function alterar_login(){
-        const vetor_user_logado = JSON.parse(localStorage.getItem('user_logado'));
-        const dados_cadastro = JSON.parse(localStorage.getItem( vetor_user_logado[0]));
-        const email = document.getElementById('email');
-        const senha = document.getElementById('senha');
-        const senha_rep = document.getElementById('senha_rep');
-        
-        dados_cadastro[1] = email.value; // email
-        dados_cadastro[4] = senha.value; //senha
-        dados_cadastro[5] = senha_rep.value; //senha repetida
-
-       if(email.value =='' || senha.value =='' || senha_rep.value =='' ){
-        alert('Preencha todos os campos.');
-       }else{
-        if(senha.value != senha_rep.value){
-          alert('Repita a mesma senha, por favor!');
-          senha_rep.focus();
-        }else{
-          localStorage.setItem(vetor_user_logado[0], JSON.stringify(dados_cadastro)); 
-          window.location.href = "tela_de_Projetos.html";
-        }
-       }
-
-      }
-
-          /*Interação do Menu*/
-          var status_menu = false; 
-
-function abrir_opcoes_do_Menu(){
-
-  status_menu = !status_menu;
-  if(status_menu==true){
-    if (tema['status'] == 'claro') {
-      document.getElementById("botao_menu").innerHTML = lua;
-    }else{
-      document.getElementById("botao_menu").innerHTML = sol;
-    }
-}else{document.getElementById("botao_menu").innerHTML = `<div></div>`}
+    <div class="container_principal fade-in">
+      <div class="text-center mb-3">
+        <h3 class="fw-bold">Alterar Login</h3>
+        <img
+            src="imagens/logo_actus.png"
+            alt="logo"
+            width="100"
+            class="mb-2"
+          />
+        <h2 class="fw-bold">Actus</h2>
+      </div>
   
-} 
-
-//Mudar tema do site
-var tema = JSON.parse(localStorage.getItem('Tema'));
-      var link = document.getElementById('folha_de_estilos');
-      var imagem_tema = document.getElementById('imagem_tema');
-      var img_tema_claro = 'imagens/menu_sanduiche-semfundo.png'; 
-      var img_tema_escuro = 'imagens/menu_sanduiche_mod_escuro-semfundo.png'; 
-      var sol =   `
-  <div class="container_opcoes_menu">
-      <ul>
-          <li><button onclick="mudar_tema()" class="botao_mudar_tema_menu">Tema Claro<img  src="imagens/sol_semFundo.png" alt="img_sol" width="40px" height="40px" style="border-radius: 100%; margin-left: 10px;"></button></li>
-          <li><a href="tela_de_Projetos.html">Meus Projetos</a></li>
-          <li><a href="editar_Perfil.html">Editar Perfil</a></li>
-          <li><a href="index.html">Sair</a></li>
-      </ul>
-  </div> 
-  `;
-
-  var lua =   `
-  <div class="container_opcoes_menu">
-      <ul>
-          <li><button onclick="mudar_tema()" class="botao_mudar_tema_menu">Tema Escuro<img  src="imagens/lua.png" alt="img_lua" width="40px" height="40px" style="border-radius: 100%; margin-left: 10px;"></button></li>
-          <li><a href="tela_de_Projetos.html">Meus Projetos</a></li>
-          <li><a href="alterar_Login.html">Alterar Login</a></li>
-          <li><a href="index.html">Sair</a></li>
-      </ul>
-  </div> 
-  `;
-
-      if(!tema){
-            tema = {};
-            tema['status'] = 'claro';
-            imagem_tema.src = img_tema_claro; 
-          }
-          
-
-      function mudar_tema(){
-        if (tema['status'] == 'claro') {
-          tema['status'] = 'escuro';
-          link.href = "stylesEscuro.css";
-          imagem_tema.src = img_tema_escuro;
-          document.getElementById("botao_menu").innerHTML = sol;
-
-
-
-        } else {
-          tema['status'] = 'claro';
-          link.href = "styles.css";
-          imagem_tema.src = img_tema_claro;
-          document.getElementById("botao_menu").innerHTML = lua;
-
-        }
-        localStorage.setItem('Tema', JSON.stringify(tema)); 
-      }
-
-      //Roda quando o DOM inicializa para ver o tema do site
-      document.addEventListener('DOMContentLoaded', function () { 
-         
-        if(!tema){
-            tema = {};
-            tema['status'] = 'claro';
-            imagem_tema.src = img_tema_claro;
-            //botao_mudar_tema.innerHTML = botao_mudar_para_escuro;
-          }else{
-            if (tema['status'] == 'claro') {
-              tema['status'] = 'claro';
-              link.href = "styles.css";
-              imagem_tema.src = img_tema_claro;
-              //botao_mudar_tema.innerHTML = botao_mudar_para_escuro;
-            } else {
-              tema['status'] = 'escuro';
-              link.href = "stylesEscuro.css";
-              imagem_tema.src = img_tema_escuro;
-              //botao_mudar_tema.innerHTML = botao_mudar_para_claro;
-            }
-          }
-        });
-    </script>
+      <p class="fw-bold mb-3">Deseja Alterar E-mail ou Senha?</p>
+  
+      <div class="mb-3">
+        <label class="form-label">Digite seu novo email:</label>
+        <input id="email" type="email" class="container_input" placeholder="exemplo@gmail.com">
+      </div>
+  
+      <div class="mb-3">
+        <label class="form-label">Digite sua nova senha:</label>
+        <input id="senha" type="password" class="container_input" placeholder="Senha(8 a 16 caracteres)">
+      </div>
+  
+      <div class="mb-4">
+        <label class="form-label">Confirme sua nova senha:</label>
+        <input id="senha_rep" type="password" class="container_input" placeholder="Senha(8 a 16 caracteres)">
+      </div>
+  
+      <button id="btn-confirmar" type="button" class="botao">Confirmar</button>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/alterar.js"></script>
   </body>
 </html>

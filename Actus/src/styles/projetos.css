@@ -1,0 +1,370 @@
+/* =============================
+   NAVEGAÇÃO SUPERIOR
+============================= */
+.container_navegacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cor-primaria);
+  padding: 10px 20px;
+  color: white;
+  transition: background-color 0.3s;
+}
+body.escuro .container_navegacao {
+  background-color: var(--cor-primaria-escuro);
+}
+
+/* =============================
+   DRAWER (Menu e Filtro)
+============================= */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  height: 100vh;
+  width: 280px;
+  background-color: var(--cor-card);
+  border-left: 1px solid var(--cor-borda);
+  padding: 20px;
+  box-shadow: -3px 0 8px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  z-index: 1100;
+}
+.drawer.aberto {
+  right: 0;
+}
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+.drawer-overlay.ativo {
+  display: block;
+}
+body.escuro .drawer,
+body.escuro .drawer-filtro {
+  background-color: var(--cor-card-escuro);
+  color: var(--cor-texto-claro);
+}
+.drawer-filtro {
+  right: -280px;
+  background-color: var(--cor-card);
+  padding: 20px;
+}
+.drawer-filtro label {
+  display: block;
+  margin: 10px 0;
+}
+.drawer-filtro button {
+  margin-top: 20px;
+  padding: 8px;
+  width: 100%;
+  border: none;
+  background-color: var(--cor-primaria);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.drawer-filtro button:hover {
+  background-color: var(--cor-primaria-hover);
+}
+
+.perfil_drawer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* =============================
+   PERFIL DRAWER
+============================= */
+.perfil_drawer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.perfil_drawer i {
+  font-size: 4rem;
+  color: var(--cor-primaria);
+  margin-bottom: 10px;
+}
+
+.perfil_drawer small {
+  font-size: 0.9rem;
+  color: var(--cor-texto-secundario);
+}
+
+body.escuro .perfil_drawer i {
+  color: var(--cor-primaria-escuro);
+}
+
+/* =============================
+   MENU OPÇÕES
+============================= */
+.menu_opcoes {
+  list-style: none;
+  padding: 0;
+}
+.menu_opcoes li {
+  margin: 10px 0;
+}
+.menu_opcoes a,
+.menu_opcoes button {
+  text-decoration: none;
+  color: inherit;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s;
+  width: 100%;
+}
+.menu_opcoes a:hover,
+.menu_opcoes button:hover {
+  background-color: var(--cor-primaria-hover);
+  color: white;
+}
+
+/* Colunas */
+.container_todos_Projetos {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+  height: calc(90vh - 30px);
+}
+
+.quadro {
+  flex: 1;
+  background-color: var(--cor-primaria);
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid var(--cor-borda);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 300px;
+  opacity: 0.9;
+}
+
+body.escuro .quadro {
+  background-color: var(--cor-primaria-escuro);
+  border-color: var(--cor-borda-input);
+}
+
+/* =============================
+CARDS DE OS (modo colunas)
+============================= */
+
+.titulo_coluna {
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.card_os {
+  position: relative;
+  background-color: var(--cor-card);
+  padding: 15px 15px 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 120px;
+}
+.card_os h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+.card_os p {
+  margin: 0;
+  font-size: 0.88rem;
+}
+.card_os .botoes {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.card_os .botoes button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cor-primaria);
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+.card_os .botoes button:hover {
+  color: var(--cor-primaria-hover);
+}
+body.escuro .card_os {
+  background-color: var(--cor-card-escuro);
+  color: var(--cor-texto-claro);
+}
+body.escuro .card_os .botoes button {
+  color: var(--cor-primaria-escuro);
+}
+
+.circulo_adicionar_projeto {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--cor-primaria);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  width: 50px;
+  height: 50px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.escuro .circulo_adicionar_projeto {
+  background-color: var(--cor-primaria-escuro);
+}
+
+.tag_os {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: white;
+  opacity: 0.95;
+}
+
+.tag-aberta {
+  background-color: #81c784;
+  color: #333;
+}
+.tag-em-processo {
+  background-color: #ffd54f;
+  color: #333;
+}
+.tag-rejeitado {
+  background-color: #e57373;
+}
+.tag-concluído {
+  background-color: #64b5f6;
+}
+.drawer-filtro {
+  right: -280px;
+  background-color: var(--cor-card);
+  padding: 20px;
+}
+
+body.escuro .drawer-filtro {
+  background-color: var(--cor-card-escuro);
+  color: var(--cor-texto-claro);
+}
+
+.drawer-filtro label {
+  display: block;
+  margin: 10px 0;
+}
+
+.drawer-filtro button {
+  margin-top: 20px;
+  padding: 8px;
+  width: 100%;
+  border: none;
+  background-color: var(--cor-primaria);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.drawer-filtro button:hover {
+  background-color: var(--cor-primaria-hover);
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.area_cartoes {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+body.escuro .area_cartoes {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* =============================
+   MODO LISTA DE OSs
+============================= */
+
+.container_todos_Projetos.modo-lista {
+  flex-direction: column;
+  padding: 10px;
+  height: auto;
+}
+.container_todos_Projetos.modo-lista .quadro {
+  display: none;
+}
+.container_todos_Projetos.modo-lista .lista_oss {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card_os.lista {
+  display: grid;
+  grid-template-columns: 70px 1fr 2fr 150px 150px 150px 150px 120px;
+  background-color: var(--cor-card);
+  color: var(--cor-texto-principal);
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: default;
+}
+body.escuro .card_os.lista {
+  background-color: var(--cor-card-escuro);
+  color: var(--cor-texto-claro);
+}
+.card_os.lista .tag_os {
+  position: static;
+  justify-self: end;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  font-weight: 600;
+}
