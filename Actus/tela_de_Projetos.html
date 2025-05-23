@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="imagens/logo_actus.ico"
+      type="image/x-icon"
+    />
+    <title>Projetos - Actus</title>
+    <style>
+      body {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      body.loaded {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--cor-primaria); padding: 0.75rem 1.5rem;">
+    <div class="container-fluid justify-content-between">
+      <h1 class="navbar-brand m-0 fs-4">Projetos</h1>
+      <div class="d-flex align-items-center gap-3">
+        <button id="btnModoLista" class="btn text-white fs-4" title="Alternar modo lista"><i class="bi bi-list-ul"></i></button>
+        <button id="btnFiltro" class="btn text-white fs-3" title="Filtrar OSs"><i class="bi bi-filter"></i></button>
+        <button id="btnToggleDrawer" class="btn text-white fs-3" title="Menu"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Drawer Menu -->
+  <div id="drawerMenu" class="drawer">
+    <div class="text-center perfil_drawer">
+      <i class="bi bi-person-circle display-3"></i>
+      <div id="nomeUsuarioDrawer" class="mt-2 fw-semibold">Usuário</div>
+    </div>
+    <ul class="menu_opcoes list-unstyled">
+      <li><a href="editar_Perfil.html" class="btn w-100 text-start"><i class="bi bi-person-circle"></i> Editar Perfil</a></li>
+      <li><a href="alterar_Login.html" class="btn w-100 text-start"><i class="bi bi-gear"></i> Alterar Login</a></li>
+      <li><button id="btnTema" class="btn w-100 text-start"><i class="bi bi-moon-fill"></i> Mudar Tema</button></li>
+      <li><a href="index.html" class="btn w-100 text-start"><i class="bi bi-box-arrow-left"></i> Sair</a></li>
+    </ul>
+  </div>
+
+  <!-- Drawer Filtro -->
+  <div id="drawerFiltro" class="drawer drawer-filtro">
+    <h5 class="mb-3">Filtros</h5>
+    <!-- <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" value="aberta" checked />
+      <label class="form-check-label">Aberta</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" value="em processo" checked />
+      <label class="form-check-label">Em processo</label>
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" value="rejeitado" checked />
+      <label class="form-check-label">Rejeitado</label>
+    </div>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" value="concluído" checked />
+      <label class="form-check-label">Concluído</label>
+    </div> -->
+
+    <input type="text" class="form-control mb-2" placeholder="Buscar por descrição..." id="filtroDescricao">
+    <input type="number" class="form-control mb-2" placeholder="Buscar por ID" id="filtroId">
+    <input type="text" class="form-control mb-2" placeholder="Responsável" id="filtroResponsavel">
+    <input type="text" class="form-control mb-2" placeholder="Cidade" id="filtroCidade">
+    <input type="text" class="form-control mb-2" placeholder="Estado" id="filtroEstado">
+    <input type="date" class="form-control mb-2" placeholder="Data de Evento" id="filtroDataEvento">
+    <input type="date" class="form-control mb-3" placeholder="Data de Criação" id="filtroDataCriacao">
+
+    <button id="aplicarFiltro" class="btn btn-primary w-100">Aplicar</button>
+  </div>  
+  <!-- Área de Projetos -->
+  <main class="container_todos_Projetos px-4 py-3">
+    <div class="quadro" id="coluna-afazer">
+      <div class="titulo_coluna">A Fazer</div>
+      <div class="area_cartoes" data-status="afazer"></div>
+    </div>
+    <div class="quadro" id="coluna-emdev">
+      <div class="titulo_coluna">Em Desenvolvimento</div>
+      <div class="area_cartoes" data-status="emdev"></div>
+    </div>
+    <div class="quadro" id="coluna-finalizado">
+      <div class="titulo_coluna">Finalizado</div>
+      <div class="area_cartoes" data-status="finalizado"></div>
+    </div>
+
+    <div id="modoLista" class="d-none" >
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Tag</th>
+            <th>Data</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Responsável</th>
+          </tr>
+        </thead>
+        <tbody id="listaOsBody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Overlay -->
+  <div id="overlayDrawer" class="drawer-overlay"></div>
+
+  <button class="circulo_adicionar_projeto" onclick="window.location.href='tela_projeto_criacao.html'">
+    <i class="bi bi-plus-lg fs-2"></i>
+  </button>
+
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/projetos.js"></script>
+    <script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    </script>
+  </body>
+</html>

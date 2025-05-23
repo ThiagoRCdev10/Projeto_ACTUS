@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="imagens/logo_actus.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actus</title>
+    <style>
+      body {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      body.loaded {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="container_body">
+    <div class="conteiner_Principal fade-in">
+      <form id="formulario">
+        <h1 class="text-center mb-4">Login</h1>
+
+        <div class="text-center mb-3">
+          <img
+            src="imagens/logo_actus.png"
+            alt="logo"
+            width="100"
+            class="mb-2"
+          />
+          <h2 class="fw-bold">Actus</h2>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            class="form-control container_input"
+            placeholder="Digite seu email"
+            required
+          />
+        </div>
+
+        <div class="mb-3 position-relative">
+          <label for="senha" class="form-label">Senha</label>
+          <input
+            id="senha"
+            type="password"
+            class="form-control container_input"
+            placeholder="Digite sua senha"
+            required
+          />
+          <button
+            type="button"
+            id="toggleSenha"
+            class="btn btn-sm btn-toggle-senha"
+          >
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+
+        <div class="d-grip gap-2">
+          <button type="button" class="botao">Entrar</button>
+        </div>
+
+        <div class="mt-4 text-center">
+          <a href="tela_cadastro.html" class="outra_opcao"
+            >Não possui cadastro?</a
+          >
+          <a href="esqueceu_Senha.html" class="outra_opcao"
+            >Esqueceu a senha?</a
+          >
+        </div>
+      </form>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/login.js"></script>
+    <script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    </script>
+  </body>
+</html>

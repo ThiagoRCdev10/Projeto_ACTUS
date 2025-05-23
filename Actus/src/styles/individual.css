@@ -1,0 +1,380 @@
+.form-container {
+  background-color: var(--cor-card);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px var(--cor-sombra-leve);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.escuro .form-container {
+  background-color: var(--cor-card-escuro);
+}
+
+input,
+textarea,
+select {
+  background-color: var(--cor-fundo-claro);
+  color: var(--cor-texto-principal);
+  border: 1px solid var(--cor-borda-input);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+}
+
+body.escuro input,
+body.escuro textarea,
+body.escuro select {
+  background-color: var(--cor-card-escuro);
+  color: var(--cor-texto-claro);
+  border-color: var(--cor-borda-escuro);
+}
+
+label {
+  font-weight: 600;
+  color: var(--cor-texto-secundario);
+}
+
+body.escuro label {
+  color: var(--cor-texto-claro);
+}
+
+textarea[readonly] {
+  background-color: var(--cor-fundo-input-readonly);
+  border-style: dashed;
+  font-family: monospace;
+  resize: none;
+}
+
+body.escuro textarea[readonly] {
+  background-color: var(--cor-fundo-input-readonly-escuro);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.15rem var(--cor-focus-box-shadow);
+}
+
+body.escuro input,
+body.escuro textarea,
+body.escuro select {
+  background-color: var(--cor-card-escuro);
+  color: var(--cor-texto-claro);
+}
+
+body.escuro input:focus,
+body.escuro textarea:focus,
+body.escuro select:focus {
+  background-color: var(--cor-card-escuro);
+  color: var(--cor-texto-claro);
+  border-color: var(--cor-borda-escuro);
+}
+
+input, select, textarea {
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--cor-borda-input);
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.container_input {
+  width: 100%;
+  margin-top: 5px;
+  padding: 12px 15px;
+  border-radius: 15px;
+  border: 1px solid var(--cor-borda-input);
+  background-color: var(--cor-card);
+  color: var(--cor-texto-principal);
+  transition: border-color 0.3s ease;
+}
+
+.container_input:focus {
+  border-color: var(--cor-primaria);
+  outline: none;
+  box-shadow: var(--cor-input-box-shadow);
+}
+
+body.escuro .container_input {
+  background-color: var(--cor-card-escuro);
+  color: var(--cor-texto-claro);
+  border-color: var(--cor-borda-escuro);
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-check {
+  margin-right: 1rem;
+}
+
+.form-check-input {
+  width: 1.3em;
+  height: 1.3em;
+  margin-top: 0.3em;
+  cursor: pointer;
+}
+
+.form-check-inline .form-check-input {
+  margin-top: 0.4rem;
+  transform: scale(1.1);
+}
+
+.form-check-label {
+  position: relative;
+  color: var(--cor-primaria);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8em;
+  border: 3px solid var(--cor-primaria);
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.form-check-label:before {
+  content: "";
+  height: 1em;
+  width: 1em;
+  border: 3px solid var(--cor-primaria);
+  border-radius: 50%;
+}
+
+.etapa-box .form-check-input:checked + .form-check-label:before {
+  height: 1em;
+  width: 1em;
+  border: 0.375em solid var(--cor-branco);
+  background-color: var(--cor-primaria);
+}
+
+.etapa-box .form-check-input:checked + .form-check-label {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+}
+
+textarea {
+  resize: vertical;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Estilo para input de ficheiro */
+input[type="file"].container_input {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 15px;
+  border-radius: 15px;
+  background-color: var(--cor-card);
+  color: var(--cor-texto-principal);
+  border: 1px solid var(--cor-borda-input);
+  cursor: pointer;
+}
+
+/* Remove aparência nativa do botão no Chrome */
+input[type="file"].container_input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+/* Estiliza o botão como um pseudo-elemento */
+input[type="file"].container_input::before {
+  content: 'Selecionar ficheiro';
+  display: inline-block;
+  background: var(--cor-primaria);
+  color: var(--cor-branco);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+input[type="file"].container_input:hover::before {
+  background: var(--cor-primaria-hover);
+}
+
+/* Tema escuro */
+body.escuro input[type="file"].container_input {
+  background-color: var(--cor-card-escuro);
+  color: var(--cor-texto-claro);
+  border-color: var(--cor-borda-escuro);
+}
+
+body.escuro input[type="file"].container_input::before {
+  background: var(--cor-primaria-escuro);
+}
+
+#preview iframe,
+#preview img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  display: block;
+}
+
+.btn-ficheiro-style {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto-botao);
+  padding: 8px 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-ficheiro-style:hover {
+  background-color: var(--cor-primaria-hover);
+  color: var(--cor-texto-botao);
+}
+
+body.escuro .btn-ficheiro-style {
+  background-color: var(--cor-primaria-escuro);
+  color: var(--cor-branco);
+}
+
+body.escuro .btn-ficheiro-style:hover {
+  background-color: var(--cor-primaria-escuro);
+  color: var(--cor-branco);
+}
+
+.card_os {
+  position: relative;
+  background-color: var(--cor-card);
+  padding: 20px 15px 15px 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--cor-sombra-leve);
+  color: var(--cor-texto-principal);
+  transition: 0.3s;
+  min-height: 160px;
+}
+
+.card_os h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.card_os p {
+  font-size: 0.9rem;
+  color: var(--cor-texto-secundario);
+}
+
+.btn-close-custom {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--cor-erro);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.preco {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-weight: 600;
+  background: var(--cor-tag-concluido);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+body.escuro .card_os {
+  background-color: var(--cor-card-escuro);
+  color: var(--cor-texto-claro);
+}
+
+body.escuro .preco {
+  background: var(--cor-tag-verificacao);
+}
+
+.etapas-card {
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+}
+
+.etapas-card h4 {
+  color: var(--cor-texto-principal);
+}
+
+.etapa-box {
+  background-color: var(--cor-fundo-claro);
+  border: 1px solid var(--cor-borda);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.etapa-box:hover {
+  background-color: var(--cor-card);
+  cursor: pointer;
+}
+
+.etapa-box strong {
+  color: var(--cor-texto-principal);
+}
+
+.etapa-box p {
+  color: var(--cor-texto-secundario);
+  margin-bottom: 0.5rem;
+}
+
+.etapa-box .form-check-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.etapa-box .form-check-label {
+  color: var(--cor-texto-principal);
+}
+
+.etapa-valor {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+  border-radius: 0.75rem;
+}
+
+.etapa-modal-content {
+  background-color: var(--cor-card);
+  color: var(--cor-texto-principal);
+  border: 1px solid var(--cor-borda);
+}
+
+.etapa-modal-content .modal-header {
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.etapa-modal-content .modal-footer {
+  border-top: 1px solid var(--cor-borda);
+}
+
+.modal-backdrop {
+  z-index: 1040;
+}
+
+.modal {
+  z-index: 1050;
+}
+
+html, body {
+  height: 100%;
+}
+
+.modal.show .modal-dialog {
+  transform: translate(0, 0);
+}

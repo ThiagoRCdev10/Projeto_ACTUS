@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="imagens/logo_actus.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actus</title>
+    <style>
+      body {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      body.loaded {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+
+    <a href="tela_de_Projetos.html" class="btn btn-ficheiro-style position-absolute top-0 start-0 m-3 z-3">
+      <i class="bi bi-arrow-left"></i> Sair
+    </a>
+
+    <div class="container_principal fade-in">
+      <div class="text-center mb-3">
+        <h3 class="fw-bold">Alterar Login</h3>
+        <img
+            src="imagens/logo_actus.png"
+            alt="logo"
+            width="100"
+            class="mb-2"
+          />
+        <h2 class="fw-bold">Actus</h2>
+      </div>
+  
+      <p class="fw-bold mb-3">Deseja Alterar E-mail ou Senha?</p>
+  
+      <div class="mb-3">
+        <label class="form-label">Digite seu novo email:</label>
+        <input id="email" type="email" class="container_input" placeholder="exemplo@gmail.com">
+      </div>
+  
+      <div class="mb-3">
+        <label class="form-label">Digite sua nova senha:</label>
+        <input id="senha" type="password" class="container_input" placeholder="Senha(8 a 16 caracteres)">
+      </div>
+  
+      <div class="mb-4">
+        <label class="form-label">Confirme sua nova senha:</label>
+        <input id="senha_rep" type="password" class="container_input" placeholder="Senha(8 a 16 caracteres)">
+      </div>
+  
+      <button id="btn-confirmar" type="button" class="botao">Confirmar</button>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/alterar.js"></script>
+    <script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    </script>
+  </body>
+</html>

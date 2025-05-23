@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="imagens/logo_actus.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actus</title>
+    <style>
+      body {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      body.loaded {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <a href="tela_de_Projetos.html" class="btn btn-ficheiro-style position-absolute top-0 start-0 m-3 z-3">
+      <i class="bi bi-arrow-left"></i> Sair
+    </a>
+
+    <div class = "text-center position-absolute top-0 w-100 mt-3">
+    </div>
+      
+    <div class = "container_principal fade-in">
+      <div class="text-center mb-3">
+        <h3 class="fw-bold">Editar perfil</h3>
+      </div>
+      <div class="perfil_drawer">
+        <i class="bi bi-person-circle display-3"></i>
+      </div>
+      
+      <div class ="mb-3">
+        <label class ="form-label">Nome</label>
+        <input id ="nome" type = "text" class = "form-control container_input" value = "">
+      </div>
+
+      <div class ="mb-3">
+        <label class ="form-label">Cargo</label>
+        <input id ="cargo" type = "text" class = "form-control container_input" value = "">
+      </div>
+
+      <div class ="mb-3">
+        <label class ="form-label">Data de nascimento</label>
+        <input id ="dataNascimento" type = "date" class = "form-control container_input" value = "">
+      </div>
+
+      <div class="d-grid gap-2">
+        <button id="btn-confirmar" type="button" class="botao">Confirmar</button>
+      </div>
+
+    </div>
+
+    
+  
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/editar.js"></script>
+
+    <script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    </script>
+    </script>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="imagens/logo_actus.ico"
+      type="image/x-icon"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actus</title>
+    <style>
+      body {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      body.loaded {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="container_body">
+    <div class="conteiner_Principal fade-in">
+      <form id="formCadastro">
+        <h1 class="text-center mb-4">Cadastro</h1>
+
+        <div class="text-center mb-3">
+          <img
+            src="imagens/logo_actus.png"
+            alt="logo"
+            width="100"
+            class="mb-2"
+          />
+          <h2 class="fw-bold">Actus</h2>
+        </div>
+
+        <div class="mb-3">
+          <input
+            required
+            type="text"
+            class="form-control container_input"
+            id="nome"
+            placeholder="Nome Completo"
+          />
+        </div>
+
+        <div class="mb-3">
+          <input
+            required
+            type="email"
+            class="form-control container_input"
+            id="email"
+            placeholder="E-mail"
+          />
+        </div>
+
+        <div class="mb-3">
+          <input
+            required
+            type="date"
+            class="form-control container_input"
+            id="nascimento"
+            placeholder="Data de Nascimento"
+          />
+        </div>
+
+        <div class="mb-3">
+          <input
+            required
+            type="text"
+            class="form-control container_input"
+            id="cargo"
+            placeholder="Cargo"
+          />
+        </div>
+
+        <div class="mb-3 position-relative">
+          <input
+            required
+            type="password"
+            class="form-control container_input"
+            id="senha"
+            placeholder="Senha"
+          />
+          <button type="button" class="btn-toggle-senha">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+
+        <div class="mb-3 position-relative">
+          <input
+            required
+            type="password"
+            class="form-control container_input"
+            id="confirmarSenha"
+            placeholder="Confirme a senha"
+          />
+          <button type="button" class="btn-toggle-senha">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mb-3">
+          Cadastrar
+        </button>
+
+        <div class="text-center">
+          <a href="index.html" class="outra_opcao">Já possuo uma conta</a>
+        </div>
+      </form>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/cadastro.js"></script>
+    <script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    </script>
+  </body>
+</html>

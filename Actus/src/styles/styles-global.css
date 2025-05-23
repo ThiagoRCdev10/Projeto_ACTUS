@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+:root {
+  /* === Paleta Base === */
+  --cor-branco: #ffffff;
+  --cor-preto: #1a1a1a;
+
+  /* === Cores Principais === */
+  --cor-primaria: #4a90e2;
+  --cor-primaria-hover: #357ab8;
+  --cor-primaria-escuro: #7aa0f8;
+
+  --cor-secundaria: #5d6aa5;
+
+  /* === Texto === */
+  --cor-texto-principal: #2e3a59;
+  --cor-texto-secundario: #6b7b9d;
+  --cor-texto-escuro: #eee;
+  --cor-texto-claro: #f0f0f0;
+  --cor-texto-botao: var(--cor-branco);
+  --cor-texto-link: var(--cor-primaria);
+  --cor-texto-drawer: var(--cor-texto-secundario);
+
+  /* === Fundos === */
+  --cor-fundo-claro: #f4f7fc;
+  --cor-fundo-escuro: #1e1e1e;
+  --cor-fundo-input-readonly: #f1f1f1;
+  --cor-fundo-input-readonly-escuro: #2a2a2a;
+
+  --cor-card: #ffffff;
+  --cor-card-escuro: #2c2c2c;
+
+  /* === Bordas === */
+  --cor-borda: #ccc;
+  --cor-borda-input: #c0d3f2;
+  --cor-borda-escuro: #444;
+
+  /* === Botões === */
+  --cor-botao-fundo: var(--cor-primaria);
+  --cor-botao-hover: var(--cor-primaria-hover);
+  --cor-botao-texto: var(--cor-texto-botao);
+  --cor-botao-fundo-escuro: var(--cor-primaria-escuro);
+  --cor-botao-texto-escuro: var(--cor-texto-claro);
+
+  /* === Sombras === */
+  --cor-sombra-leve: rgba(0, 0, 0, 0.05);
+  --cor-sombra-drawer: rgba(0, 0, 0, 0.2);
+  --cor-focus-box-shadow: rgba(100, 100, 255, 0.3);
+  --cor-input-box-shadow: rgba(57, 155, 226, 0.2);
+
+  /* === Status Tags === */
+  --cor-tag-aberta: #81c784;
+  --cor-tag-em-processo: #ffd54f;
+  --cor-tag-verificacao: #4fc3f7;
+  --cor-tag-rejeitado: #e57373;
+  --cor-tag-cancelado: #b0bec5;
+  --cor-tag-concluido: #64b5f6;
+
+  /* === Outros === */
+  --cor-titulo: var(--cor-preto);
+  --cor-erro: #ff4d4d;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--cor-fundo-claro);
+  color: var(--cor-texto-principal);
+  transition: background-color 0.3s ease;
+}
+
+body.escuro {
+  background-color: var(--cor-fundo-escuro);
+  color: var(--cor-texto-escuro);
+}
+
+a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--cor-primaria-hover);
+}
+
+.fade-in {
+  animation: fadeInMove 0.8s ease forwards;
+}
+
+@keyframes fadeInMove {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

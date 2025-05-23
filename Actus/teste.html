@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload PDF</title>
+</head>
+<body>
+  <h2>Upload de PDF</h2>
+  <form id="uploadForm">
+    <input type="file" name="file" accept="application/pdf" />
+    <button type="submit">Enviar PDF</button>
+  </form>
+
+  <h2>Baixar PDF</h2>
+  <input type="text" id="filename" placeholder="Nome do PDF" />
+  <button onclick="downloadPDF()">Baixar</button>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      const res = await fetch('http://localhost:5000/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+      alert('PDF enviado: ' + data.file.filename);
+    });
+
+    function downloadPDF() {
+      const filename = document.getElementById('filename').value;
+      window.open(`http://localhost:5000/download/${filename}`, '_blank');
+    }
+  </script>
+</body>
+</html>

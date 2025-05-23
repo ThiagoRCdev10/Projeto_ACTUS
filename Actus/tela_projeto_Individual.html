@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="imagens/logo_actus.ico"
+      type="image/x-icon"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actus</title>
+    <style>
+      body {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      body.loaded {
+        opacity: 1;
+      }
+
+    </style>
+  </head>
+  <body class="fade-in">
+    <div class="container my-5 form-container position-relative">
+      
+      <!-- Botão de sair (fora do form) -->
+      <a href="tela_de_Projetos.html" class="btn btn-ficheiro-style position-absolute top-0 start-0 m-3 z-3">
+        <i class="bi bi-arrow-left"></i> Sair
+      </a>
+  
+      <form id="osForm" class="mt-5 pt-4">
+  
+        <!-- Título -->
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Título do Projeto</label>
+          <input type="text" class="form-control container_input" id="titulo" required />
+        </div>
+  
+        <!-- Descrição -->
+        <div class="mb-3">
+          <label for="descricao" class="form-label">Descrição do Projeto</label>
+          <textarea class="form-control container_input" id="descricao" rows="3"></textarea>
+        </div>
+  
+        <!-- Estado e Cidade -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="estado" class="form-label">Estado</label>
+            <select id="estado" class="form-select container_input" required>
+              <option disabled selected>Selecione</option>
+              <option>SP</option>
+              <option>RJ</option>
+              <option>MG</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="cidade" class="form-label">Cidade</label>
+            <select id="cidade" class="form-select container_input" required>
+              <option disabled selected>Selecione</option>
+              <option>São Paulo</option>
+              <option>Rio de Janeiro</option>
+              <option>Belo Horizonte</option>
+            </select>
+          </div>
+    
+        </div>
+        <div class="mb-3">
+          <label for="endereço" class="form-label">Endereço</label>
+          <textarea class="form-control container_input" id="endereco" rows="3"></textarea>
+        </div>
+
+        <!-- Datas -->
+        <div class="row mb-3 align-items-end">
+          <div class="col-md-6">
+            <label for="data" class="form-label">Data Inicial</label>
+            <input type="date" class="form-control container_input" id="data" />
+          </div>
+          <div class="col-md-6">
+            <label for="data" class="form-label">Data Final</label>
+            <input type="date" class="form-control container_input" id="dataFinal" />
+          </div>
+        </div>
+
+  
+        <!-- Arquivo -->
+        <div class="mb-4">
+          <label for="ficheiro" class="form-label">Arquivo (.pdf / .png)</label>
+          <div class="d-flex gap-2">
+            <input type="file" id="ficheiro" class="form-control container_input" />
+            <button type="button" id="btnExportar" class="btn btn-ficheiro-style">Exportar</button>
+          </div>
+          <div id="preview" class="mt-2"></div>
+        </div>
+        
+        
+
+        
+        <!-- Etapa -->
+        <div class="container my-4" id="etapasContainer">
+          <div class="card etapas-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="mb-0">Etapas do Projeto</h4>
+              <button type= "button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEtapa">
+                <i class="bi bi-plus-lg me-1"></i> Adicionar Etapa
+              </button>
+            </div>
+
+        <!-- Modal de Adição de Etapa -->
+        <div class="modal fade" id="modalEtapa" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Nova Etapa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Formulário da etapa -->
+                <div id="formEtapa">
+                  <div class="mb-3">
+                    <label for="tituloEtapa" class="form-label">Título</label>
+                    <input type="text" id="tituloEtapa" class="form-control"  />
+                  </div>
+                  <div class="mb-3">
+                    <label for="descricaoEtapa" class="form-label">Descrição</label>
+                    <textarea id="descricaoEtapa" class="form-control" rows="3"></textarea>
+                  </div>
+                  <div id="listaItens"></div>
+                  <div class="mb-2 text-end">
+                    <button type="button" id="btnAdicionarItem" class="btn btn-outline-primary btn-sm">+ Adicionar item</button>
+                  </div>
+                  <div class="mb-3">
+                    <label for="valorTotalEtapa" class="form-label">Valor Total</label>
+                    <input type="text" id="valorTotalEtapa" class="form-control" readonly value="R$ 0,00" />
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="salvarEtapa" >Salvar Etapa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="etapasNovas"></div>
+        <!-- Salvar -->
+        <button type="submit" class="btn btn-ficheiro-style w-100 mt-3 ">Salvar Atualização</button>
+      </form>
+    </div>
+    
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/individual.js"></script>
+    <script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    </script>
+  </body>
+</html>
