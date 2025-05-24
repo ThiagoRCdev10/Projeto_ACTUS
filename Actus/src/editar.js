@@ -21,7 +21,7 @@ document.getElementById("btn-confirmar").addEventListener("click", async functio
 
   if (nomeCompleto !== '' && cargo !== '' && dataNascimento !== '') {
     try {
-      const API_BASE = 'https://projetoactus-production.up.railway.app/';
+      const API_BASE = 'https://projetoactus-production.up.railway.app';
       const dadosAtualizados = {
         nomeCompleto,
         cargo,

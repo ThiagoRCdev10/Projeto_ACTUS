@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
  let osExemplos = []; 
   async function buscarProjetosDoUsuario() {
-    const API_BASE = 'https://projetoactus-production.up.railway.app/';
+    const API_BASE = 'https://projetoactus-production.up.railway.app';
     const dadosUsuario = JSON.parse(localStorage.getItem("user_logado"));
     const usuarioId = dadosUsuario.usuario.id;
 
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (!confirm("Tem certeza que deseja excluir este projeto?")) return;
 
     try {
-      await fetch(`https://projetoactus-production.up.railway.app//projeto/deletePj/${os.id}`, {
+      await fetch(`https://projetoactus-production.up.railway.appprojeto/deletePj/${os.id}`, {
         method: "DELETE",
       });
       card.remove();
@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelectorAll(".area_cartoes").forEach((area) => {
     area.addEventListener("dragover", (e) => e.preventDefault());
     area.addEventListener("drop", async () => {
-      const API_BASE = 'https://projetoactus-production.up.railway.app/';
+      const API_BASE = 'https://projetoactus-production.up.railway.app';
     if (!dragged) return;
 
     const targetStatus = area.dataset.status;

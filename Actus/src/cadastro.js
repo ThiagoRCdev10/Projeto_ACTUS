@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const confirmar = document.getElementById("confirmarSenha");
   const olhosSenha = document.querySelectorAll(".btn-toggle-senha");
 
-  const API_BASE = 'https://projetoactus-production.up.railway.app/';
+  const API_BASE = 'https://projetoactus-production.up.railway.app';
 
   // Toggle senha
   olhosSenha.forEach((btn) => {
