@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("individual_criacao")
     const form = document.getElementById("osForm");
     if (form) {
-    const API_BASE = "https://projetoactus-production.up.railway.app";
+    const API_BASE = "https://projetoactus-production.up.railway.app/api";
 
 
     form.addEventListener("submit", async (e) => {

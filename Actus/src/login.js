@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function logar() {
   let email = document.getElementById("email").value;
   let senha = document.getElementById("senha").value;
-  const API_BASE = 'https://projetoactus-production.up.railway.app/api';
+  const API_BASE = 'https://projetoactus-production.up.railway.app/api/api';
   if (email == "") {
     alert("Digite seu Email");
   } else if (senha == "") {

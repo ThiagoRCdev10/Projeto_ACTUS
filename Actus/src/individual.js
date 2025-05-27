@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Preencha todos os campos!");
         return;
       }
-       const API_BASE = "https://projetoactus-production.up.railway.app";
+       const API_BASE = "https://projetoactus-production.up.railway.app/api";
     try {
       let resposta;
       if (etapaIdAtual) {
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
     
   if (form) {
-    const API_BASE = "https://projetoactus-production.up.railway.app";
+    const API_BASE = "https://projetoactus-production.up.railway.app/api";
 
 
     form.addEventListener("submit", async (e) => {
@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!confirmDelete) return;
 
         try {
-          const API_BASE = "https://projetoactus-production.up.railway.app";
+          const API_BASE = "https://projetoactus-production.up.railway.app/api";
           const resposta = await fetch(`${API_BASE}/etapa/deleteEt/${etapaId}`, {
             method: "DELETE"
           });
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!etapaId) return;
 
   try {
-    const API_BASE = "https://projetoactus-production.up.railway.app";
+    const API_BASE = "https://projetoactus-production.up.railway.app/api";
     const resposta = await fetch(`${API_BASE}/etapa/obterIdEt/${etapaId}`);
     if (!resposta.ok) throw new Error("Erro ao buscar etapa");
 
@@ -337,7 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
     async function carregarEtapas(projetoId) {
-  const API_BASE = "https://projetoactus-production.up.railway.app";
+  const API_BASE = "https://projetoactus-production.up.railway.app/api";
 
   try {
     const resposta = await fetch(`${API_BASE}/etapa/listarEt/${projetoId}`);

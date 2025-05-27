@@ -20,7 +20,7 @@ document.getElementById("btn-confirmar").addEventListener("click", async functio
   }
 
   try {
-    const API_BASE = 'https://projetoactus-production.up.railway.app';
+    const API_BASE = 'https://projetoactus-production.up.railway.app/api';
 
     // Monta os dados para atualização
     const dadosAtualizados = {
