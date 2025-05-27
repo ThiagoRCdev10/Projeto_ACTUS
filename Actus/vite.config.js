@@ -20,3 +20,5 @@ export default defineConfig({
     }
   }
 });
+
+console.log('botao do Caio');
