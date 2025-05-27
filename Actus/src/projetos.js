@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
     card.querySelector(".verDetalhes").addEventListener("click", () => {
       localStorage.setItem("os_selecionada", JSON.stringify(os));
-      window.location.href = "tela_projeto_individual.html"; 
+      window.location.href = "tela_projeto_Individual.html"; 
     });
     const btnExcluir = card.querySelector(".excluir");
     btnExcluir.addEventListener("click", async () => {
